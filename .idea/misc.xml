@@ -9,10 +9,16 @@
         <entry key="..\:/Data/Project/AndroidStudio/Android-Jetpack-Pro-IDCamp/InfoMovie2/app/src/main/res/layout/fragment_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Data/Project/AndroidStudio/Android-Jetpack-Pro-IDCamp/InfoMovie2/app/src/main/res/layout/items_row_movie.xml" value="0.36666666666666664" />
         <entry key="..\:/Data/Project/AndroidStudio/Android-Jetpack-Pro-IDCamp/InfoMovie2/app/src/main/res/layout/progress_bar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Kerjaan/IDCamp 2021/Eko Teguh Wicaksono/Sub1-v2/app/src/main/res/layout/activity_detail.xml" value="0.1" />
+        <entry key="..\:/Kerjaan/IDCamp 2021/Eko Teguh Wicaksono/Sub1-v2/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/Kerjaan/IDCamp 2021/Eko Teguh Wicaksono/Sub1-v2/app/src/main/res/layout/activity_splash_screen.xml" value="0.278125" />
+        <entry key="..\:/Kerjaan/IDCamp 2021/Eko Teguh Wicaksono/Sub1-v2/app/src/main/res/layout/fragment_list.xml" value="0.278125" />
+        <entry key="..\:/Kerjaan/IDCamp 2021/Eko Teguh Wicaksono/Sub1-v2/app/src/main/res/layout/items_row_movie.xml" value="0.278125" />
+        <entry key="..\:/Kerjaan/IDCamp 2021/Eko Teguh Wicaksono/Sub1-v2/app/src/main/res/layout/progress_bar.xml" value="0.278125" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8 (2)" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

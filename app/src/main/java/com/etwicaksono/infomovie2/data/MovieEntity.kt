@@ -12,5 +12,5 @@ data class MovieEntity(
      var director: String?,
      var actors: String?,
      var plot: String?,
-     var poster: String?
+     var poster: Int?
 )

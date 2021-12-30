@@ -8,25 +8,33 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.ActivityTestRule
 import com.etwicaksono.infomovie2.R
 import com.etwicaksono.infomovie2.utils.DataDummy
+import com.etwicaksono.infomovie2.utils.getRuntime
+import org.hamcrest.CoreMatchers.allOf
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import java.lang.Thread.sleep
 
+@RunWith(AndroidJUnit4::class)
 class HomeActivityTest {
     private val context: Context = ApplicationProvider.getApplicationContext()
     private val dummyMovie = DataDummy.getAllMovies()
     private val dummyTvShow = DataDummy.getAllTvShows()
 
-    @get:Rule
-    var activityRule = ActivityScenarioRule(HomeActivity::class.java)
+    @Rule
+    @JvmField
+    var activityRule: ActivityTestRule<HomeActivity> = ActivityTestRule(HomeActivity::class.java)
+
 
     @Test
     fun loadMovie() {
-        onView(withId(R.id.rv_film)).check(matches(isDisplayed()))
-        onView(withId(R.id.rv_film)).perform(
+        onView(allOf(withId(R.id.rv_film), isDisplayed())).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
                 dummyMovie.size
             )
@@ -35,9 +43,10 @@ class HomeActivityTest {
 
     @Test
     fun loadTVShow() {
-        onView(withId(R.id.rv_film)).check(matches(isDisplayed()))
-        onView(withId(R.id.view_pager)).perform(ViewActions.swipeRight())
-        onView(withId(R.id.rv_film)).perform(
+        onView(allOf(withId(R.id.rv_film), isDisplayed()))
+        onView(withId(R.id.view_pager)).perform(ViewActions.swipeLeft())
+        sleep(1000)
+        onView(allOf(ViewMatchers.withId(R.id.rv_film), isDisplayed())).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
                 dummyTvShow.size
             )
@@ -46,10 +55,9 @@ class HomeActivityTest {
 
     @Test
     fun loadDetailMovie() {
-        onView(withId(R.id.rv_film)).perform(
+        onView(allOf(withId(R.id.rv_film), isDisplayed())).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                0,
-                click()
+                0, click()
             )
         )
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()))
@@ -61,18 +69,19 @@ class HomeActivityTest {
         onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_release_date)).check(matches(withText(dummyMovie[0].releaseDate)))
         onView(withId(R.id.tv_runtime)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_runtime)).check(matches(withText(dummyMovie[0].runtime)))
+        onView(withId(R.id.tv_runtime)).check(matches(withText(dummyMovie[0].runtime?.let { getRuntime(it.toInt()) })))
         onView(withId(R.id.tv_plot)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_plot)).check(matches(withText(dummyMovie[0].plot)))
     }
 
     @Test
     fun loadDetailTvShow() {
-        onView(withId(R.id.view_pager)).perform(ViewActions.swipeRight())
-        onView(withId(R.id.rv_film)).perform(
+        onView(allOf(withId(R.id.rv_film), isDisplayed()))
+        onView(withId(R.id.view_pager)).perform(ViewActions.swipeLeft())
+        sleep(1000)
+        onView(allOf(ViewMatchers.withId(R.id.rv_film), isDisplayed())).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                0,
-                click()
+                0, click()
             )
         )
         onView(withId(R.id.tv_header)).check(matches(isDisplayed()))
@@ -84,7 +93,7 @@ class HomeActivityTest {
         onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_release_date)).check(matches(withText(dummyTvShow[0].releaseDate)))
         onView(withId(R.id.tv_runtime)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_runtime)).check(matches(withText(dummyTvShow[0].runtime)))
+        onView(withId(R.id.tv_runtime)).check(matches(withText(dummyTvShow[0].runtime?.let { getRuntime(it.toInt()) })))
         onView(withId(R.id.tv_plot)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_plot)).check(matches(withText(dummyTvShow[0].plot)))
     }

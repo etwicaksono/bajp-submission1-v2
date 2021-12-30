@@ -8,17 +8,12 @@ import com.etwicaksono.infomovie2.databinding.ItemsRowMovieBinding
 
 class ListAdapter(private val onClick: (MovieEntity) -> Unit) :
     RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+
     inner class ListViewHolder(private val binding: ItemsRowMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieEntity) {
             with(binding) {
-                imgMovie.setImageResource(
-                    root.resources.getIdentifier(
-                        movie.poster,
-                        "drawable",
-                        root.context.packageName
-                    )
-                )
+                imgMovie.setImageResource(movie.poster!!)
                 tvTitle.text = movie.title
                 tvReleaseDate.text = movie.releaseDate
                 tvPlot.text = movie.plot

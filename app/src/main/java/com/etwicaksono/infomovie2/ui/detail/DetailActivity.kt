@@ -32,13 +32,7 @@ class DetailActivity : AppCompatActivity() {
         binding.apply {
             tvTitle.text = movie.title
             tvGenre.text = movie.genres
-            ivPoster.setImageResource(
-                root.resources.getIdentifier(
-                    movie.poster,
-                    "drawable",
-                    this@DetailActivity.packageName
-                )
-            )
+            ivPoster.setImageResource(movie.poster!!)
             tvReleaseDate.text = movie.releaseDate
             tvRuntime.text = movie.runtime?.let { getRuntime(it.toInt()) }
             tvPlot.text = movie.plot
