@@ -1,10 +1,10 @@
 package com.etwicaksono.infomovie2.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.etwicaksono.infomovie2.R
 
 class SplashScreenActivity : AppCompatActivity() {

@@ -22,7 +22,7 @@ class DetailViewModel : ViewModel() {
         }
     }
 
-    fun getItem(context: Context) {
+    fun getItem() {
         val result =
             if (type == "movies") DataDummy.getAllMovies() else DataDummy.getAllTvShows()
 

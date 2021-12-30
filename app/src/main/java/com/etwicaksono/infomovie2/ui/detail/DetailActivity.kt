@@ -1,7 +1,7 @@
 package com.etwicaksono.infomovie2.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
 import com.etwicaksono.infomovie2.R
@@ -26,7 +26,7 @@ class DetailActivity : AppCompatActivity() {
             ViewModelProvider.NewInstanceFactory()
         )[DetailViewModel::class.java]
         viewModel.setSelectedItem(type, id)
-        viewModel.getItem(this)
+        viewModel.getItem()
         val movie = viewModel.item
 
         binding.apply {
