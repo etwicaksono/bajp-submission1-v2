@@ -76,6 +76,7 @@ class HomeActivityTest {
             check(matches(isDisplayed()))
             check(matches(withText(dummyMovie[0].plot)))
         }
+        onView(withId(R.id.fab)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -128,5 +129,6 @@ class HomeActivityTest {
             check(matches(isDisplayed()))
             check(matches(withText(dummyTvShow[0].plot)))
         }
+        onView(withId(R.id.fab)).check(matches(isDisplayed()))
     }
 }
