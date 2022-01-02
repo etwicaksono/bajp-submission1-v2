@@ -8,7 +8,6 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
@@ -41,17 +40,6 @@ class HomeActivityTest {
         )
     }
 
-    @Test
-    fun loadTVShow() {
-        onView(allOf(withId(R.id.rv_film), isDisplayed()))
-        onView(withId(R.id.view_pager)).perform(ViewActions.swipeLeft())
-        sleep(1000)
-        onView(allOf(ViewMatchers.withId(R.id.rv_film), isDisplayed())).perform(
-            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
-                dummyTvShow.size
-            )
-        )
-    }
 
     @Test
     fun loadDetailMovie() {
@@ -60,18 +48,46 @@ class HomeActivityTest {
                 0, click()
             )
         )
-        onView(withId(R.id.tv_header)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_header)).check(matches(withText(context.resources.getString(R.string.detail_movie))))
-        onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_title)).check(matches(withText(dummyMovie[0].title)))
-        onView(withId(R.id.tv_genre)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_genre)).check(matches(withText(dummyMovie[0].genres)))
-        onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_release_date)).check(matches(withText(dummyMovie[0].releaseDate)))
-        onView(withId(R.id.tv_runtime)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_runtime)).check(matches(withText(dummyMovie[0].runtime?.let { getRuntime(it.toInt()) })))
-        onView(withId(R.id.tv_plot)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_plot)).check(matches(withText(dummyMovie[0].plot)))
+        onView(withId(R.id.tv_header)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(context.resources.getString(R.string.detail_movie))))
+        }
+        onView(withId(R.id.tv_title)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyMovie[0].title)))
+        }
+        onView(withId(R.id.tv_genre)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyMovie[0].genres)))
+        }
+        onView(withId(R.id.tv_release_date)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyMovie[0].releaseDate)))
+        }
+        onView(withId(R.id.tv_runtime)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyMovie[0].runtime?.let {
+                getRuntime(
+                    it.toInt()
+                )
+            })))
+        }
+        onView(withId(R.id.tv_plot)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyMovie[0].plot)))
+        }
+    }
+
+    @Test
+    fun loadTVShow() {
+        onView(allOf(withId(R.id.rv_film), isDisplayed()))
+        onView(withId(R.id.view_pager)).perform(ViewActions.swipeLeft())
+        sleep(1000)
+        onView(allOf(withId(R.id.rv_film), isDisplayed())).perform(
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                dummyTvShow.size
+            )
+        )
     }
 
     @Test
@@ -79,22 +95,38 @@ class HomeActivityTest {
         onView(allOf(withId(R.id.rv_film), isDisplayed()))
         onView(withId(R.id.view_pager)).perform(ViewActions.swipeLeft())
         sleep(1000)
-        onView(allOf(ViewMatchers.withId(R.id.rv_film), isDisplayed())).perform(
+        onView(allOf(withId(R.id.rv_film), isDisplayed())).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0, click()
             )
         )
-        onView(withId(R.id.tv_header)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_header)).check(matches(withText(context.resources.getString(R.string.detail_tv_show))))
-        onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_title)).check(matches(withText(dummyTvShow[0].title)))
-        onView(withId(R.id.tv_genre)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_genre)).check(matches(withText(dummyTvShow[0].genres)))
-        onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_release_date)).check(matches(withText(dummyTvShow[0].releaseDate)))
-        onView(withId(R.id.tv_runtime)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_runtime)).check(matches(withText(dummyTvShow[0].runtime?.let { getRuntime(it.toInt()) })))
-        onView(withId(R.id.tv_plot)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_plot)).check(matches(withText(dummyTvShow[0].plot)))
+        onView(withId(R.id.tv_header)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(context.resources.getString(R.string.detail_tv_show))))
+        }
+        onView(withId(R.id.tv_title)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyTvShow[0].title)))
+        }
+        onView(withId(R.id.tv_genre)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyTvShow[0].genres)))
+        }
+        onView(withId(R.id.tv_release_date)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyTvShow[0].releaseDate)))
+        }
+        onView(withId(R.id.tv_runtime)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyTvShow[0].runtime?.let {
+                getRuntime(
+                    it.toInt()
+                )
+            })))
+        }
+        onView(withId(R.id.tv_plot)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyTvShow[0].plot)))
+        }
     }
 }
