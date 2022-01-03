@@ -64,6 +64,15 @@ class HomeActivityTest {
             check(matches(isDisplayed()))
             check(matches(withText(dummyMovie[0].releaseDate)))
         }
+        onView(withId(R.id.iv_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_director)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyMovie[0].director)))
+        }
+        onView(withId(R.id.tv_actors)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyMovie[0].actors)))
+        }
         onView(withId(R.id.tv_runtime)).apply {
             check(matches(isDisplayed()))
             check(matches(withText(dummyMovie[0].runtime?.let {
@@ -116,6 +125,15 @@ class HomeActivityTest {
         onView(withId(R.id.tv_release_date)).apply {
             check(matches(isDisplayed()))
             check(matches(withText(dummyTvShow[0].releaseDate)))
+        }
+        onView(withId(R.id.iv_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_director)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyTvShow[0].director)))
+        }
+        onView(withId(R.id.tv_actors)).apply {
+            check(matches(isDisplayed()))
+            check(matches(withText(dummyTvShow[0].actors)))
         }
         onView(withId(R.id.tv_runtime)).apply {
             check(matches(isDisplayed()))
