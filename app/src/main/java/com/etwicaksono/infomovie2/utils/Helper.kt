@@ -1,6 +1,7 @@
 package com.etwicaksono.infomovie2.utils
 
 import android.content.Context
+import com.etwicaksono.infomovie2.R
 import java.io.IOException
 import kotlin.math.floor
 
@@ -23,4 +24,9 @@ fun getRuntime(input: Int): String {
     return if (hour > 0) {
         "${hour}h ${minutes}m"
     } else "${minutes}m"
+}
+
+fun getAccessToken(context: Context):String?{
+    val sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key),Context.MODE_PRIVATE)
+    return sharedPref.getString(context.getString(R.string.saved_request_token),"")
 }
