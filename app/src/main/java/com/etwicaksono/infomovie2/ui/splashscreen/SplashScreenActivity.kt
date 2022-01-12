@@ -18,17 +18,20 @@ class SplashScreenActivity : AppCompatActivity() {
 
         viewModel.isLoading.observe(this, { loading: Boolean ->
             if (!loading) {
-                val sharedPref = this.getSharedPreferences(
+                startActivity(Intent(this@SplashScreenActivity, HomeActivity::class.java))
+                finish()
+            }
+        })
+
+        viewModel.requestToken.observe(this,{ response ->
+            val sharedPref = this.getSharedPreferences(
                     getString(R.string.preference_file_key),
                     Context.MODE_PRIVATE
                 )
                 val editor = sharedPref.edit()
-                editor.putString(getString(R.string.saved_request_token),viewModel.requestToken?.requestToken)
+                editor.putString(
+                    getString(R.string.saved_request_token),response.requestToken                )
                 editor.apply()
-
-                startActivity(Intent(this@SplashScreenActivity, HomeActivity::class.java))
-                finish()
-            }
         })
     }
 }

@@ -13,7 +13,8 @@ import retrofit2.Response
 class SplashScreenViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
-    var requestToken: ResponseRequestToken? = null
+    private val _requestToken = MutableLiveData<ResponseRequestToken>()
+    val requestToken: LiveData<ResponseRequestToken> = _requestToken
 
     init {
         getRequestToken()
@@ -27,13 +28,13 @@ class SplashScreenViewModel : ViewModel() {
                 call: Call<ResponseRequestToken>,
                 response: Response<ResponseRequestToken>
             ) {
-                _isLoading.value = false
                 if (!response.isSuccessful) {
                     Log.e(TAG, "getRequestToken onResponse failure: ${response.message()}")
                     Log.e(TAG, "getRequestToken onResponse failure: ${response.errorBody()}")
                 } else {
-                    requestToken = response.body()
+                    _requestToken.postValue(response.body())
                 }
+                _isLoading.value = false
             }
 
             override fun onFailure(call: Call<ResponseRequestToken>, t: Throwable) {
