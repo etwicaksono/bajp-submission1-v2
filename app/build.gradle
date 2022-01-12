@@ -12,6 +12,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "TMDB_KEY", '"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjA0MTM5OGVkZDU0ZDYzY2ZhNmNhNzAxNzdiN2YyNSIsInN1YiI6IjYxZDkwMDliNTA3MzNjMDAxYzRkMTdhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ouwMAOVQyoxDYrph3LbM_ATsYL7rJhNmm4d2S43PmFc"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
