@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiConfig {
     companion object {
         fun getApiService(): ApiService {
-            val access_token = BuildConfig.TMDB_ACCESS_TOKEN
+            val accessToken = BuildConfig.TMDB_ACCESS_TOKEN
 
             val loggingInterceptor = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -21,7 +21,7 @@ class ApiConfig {
                 .addInterceptor { chain ->
                     val request = chain.request()
                     val builder = request.newBuilder()
-                        .header("Authorization", access_token)
+                        .header("Authorization", accessToken)
                         .method(request.method, request.body)
                     val mutatedRequest = builder.build()
                     val response = chain.proceed(mutatedRequest)
