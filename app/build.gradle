@@ -12,7 +12,8 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-        buildConfigField("String", "TMDB_KEY", '"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjA0MTM5OGVkZDU0ZDYzY2ZhNmNhNzAxNzdiN2YyNSIsInN1YiI6IjYxZDkwMDliNTA3MzNjMDAxYzRkMTdhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ouwMAOVQyoxDYrph3LbM_ATsYL7rJhNmm4d2S43PmFc"')
+        buildConfigField("String", "TMDB_ACCESS_TOKEN", '"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjA0MTM5OGVkZDU0ZDYzY2ZhNmNhNzAxNzdiN2YyNSIsInN1YiI6IjYxZDkwMDliNTA3MzNjMDAxYzRkMTdhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ouwMAOVQyoxDYrph3LbM_ATsYL7rJhNmm4d2S43PmFc"')
+        buildConfigField("String", "TMDB_API_KEY", '"db041398edd54d63cfa6ca70177b7f25"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
