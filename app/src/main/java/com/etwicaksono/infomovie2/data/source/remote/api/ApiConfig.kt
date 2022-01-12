@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object {
-        fun getInstance(): ApiService {
+        fun getApiService(): ApiService {
             val access_token = BuildConfig.TMDB_KEY
 
             val loggingInterceptor = if (BuildConfig.DEBUG) {
