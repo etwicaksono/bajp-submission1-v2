@@ -23,8 +23,9 @@ class RemoteDataSource {
             instance ?: synchronized(this) { instance ?: RemoteDataSource() }
 
     }
+
+    interface LoadMoviesCallback {
+        fun onPopularMoviesReceived(movieResponse: List<Movie>)
+    }
 }
 
-interface LoadMoviesCallback {
-    fun onPopularMoviesReceived(movieResponse: List<Movie>)
-}

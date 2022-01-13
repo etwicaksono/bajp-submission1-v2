@@ -86,10 +86,10 @@
                     tools:text="December 25, 2021" />
 
                 <TextView
-                    android:id="@+id/tv_runtime"
+                    android:id="@+id/tv_vote"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_timelapse"
+                    android:drawableStart="@drawable/ic_star_rate_24"
                     android:gravity="center_vertical"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"

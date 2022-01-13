@@ -1,7 +1,7 @@
 package com.etwicaksono.infomovie2.data
 
 
-data class MovieEntity(
+data class MovieModel(
      var id: Int?,
      var type: String?,
      var title: String?,

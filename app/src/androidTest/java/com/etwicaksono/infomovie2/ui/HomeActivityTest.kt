@@ -73,7 +73,7 @@ class HomeActivityTest {
             check(matches(isDisplayed()))
             check(matches(withText(dummyMovie[0].actors)))
         }
-        onView(withId(R.id.tv_runtime)).apply {
+        onView(withId(R.id.tv_vote)).apply {
             check(matches(isDisplayed()))
             check(matches(withText(dummyMovie[0].runtime?.let {
                 getRuntime(
@@ -135,7 +135,7 @@ class HomeActivityTest {
             check(matches(isDisplayed()))
             check(matches(withText(dummyTvShow[0].actors)))
         }
-        onView(withId(R.id.tv_runtime)).apply {
+        onView(withId(R.id.tv_vote)).apply {
             check(matches(isDisplayed()))
             check(matches(withText(dummyTvShow[0].runtime?.let {
                 getRuntime(

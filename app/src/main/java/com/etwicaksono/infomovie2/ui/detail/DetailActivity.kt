@@ -34,7 +34,7 @@ class DetailActivity : AppCompatActivity() {
             tvGenre.text = movie.genres
             ivPoster.setImageResource(movie.poster!!)
             tvReleaseDate.text = movie.releaseDate
-            tvRuntime.text = movie.runtime?.let { getRuntime(it.toInt()) }
+            tvVote.text = movie.runtime?.let { getRuntime(it.toInt()) }
             tvPlot.text = movie.plot
             tvDirector.text = movie.director
             tvActors.text = movie.actors

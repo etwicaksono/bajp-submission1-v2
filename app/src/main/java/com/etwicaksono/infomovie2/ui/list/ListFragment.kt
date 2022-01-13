@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.etwicaksono.infomovie2.R
-import com.etwicaksono.infomovie2.data.MovieEntity
+import com.etwicaksono.infomovie2.data.MovieModel
 import com.etwicaksono.infomovie2.databinding.FragmentListBinding
 import com.etwicaksono.infomovie2.ui.detail.DetailActivity
 
@@ -66,7 +66,7 @@ class ListFragment : Fragment() {
         }
     }
 
-    private fun showSelectedData(movie: MovieEntity) {
+    private fun showSelectedData(movie: MovieModel) {
         startActivity(Intent(requireContext(), DetailActivity::class.java).apply {
             putExtra(DetailActivity.EXTRA_ID, movie.id)
             putExtra(DetailActivity.EXTRA_TYPE, movie.type)
