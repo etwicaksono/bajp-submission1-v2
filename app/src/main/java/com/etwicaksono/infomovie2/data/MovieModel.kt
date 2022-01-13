@@ -2,15 +2,13 @@ package com.etwicaksono.infomovie2.data
 
 
 data class MovieModel(
-     var id: Int?,
-     var type: String?,
-     var title: String?,
-     var year: String?,
-     var releaseDate: String?,
-     var runtime: String?,
-     var genres: String?,
-     var director: String?,
-     var actors: String?,
-     var plot: String?,
-     var poster: Int?
+    val id: Int,
+    val type:String,
+    val backdropPath: String,
+    val releaseDate: String,
+    val genre: String,
+    val title: String,
+    val plot: String,
+    val posterPath: String,
+    val vote: Double,
 )
