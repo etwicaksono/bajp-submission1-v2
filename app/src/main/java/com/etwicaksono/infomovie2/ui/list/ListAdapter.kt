@@ -48,7 +48,7 @@ class ListAdapter(private val onClick: (CatalogueModel) -> Unit) :
 
     override fun getItemCount(): Int = listMovies.size
 
-    fun setMovies(catalogues: List<CatalogueModel>?) {
+    fun setList(catalogues: List<CatalogueModel>?) {
         if (catalogues == null) return
         this.listMovies.clear()
         this.listMovies.addAll(catalogues)

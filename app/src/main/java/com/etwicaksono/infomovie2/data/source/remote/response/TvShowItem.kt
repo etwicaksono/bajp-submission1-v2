@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 data class TvShowItem(
     @SerializedName("id")
-    val id: Int?,
+    val id: Int,
     @SerializedName("first_air_date")
-    val releaseDate: String?,
+    val releaseDate: String,
     @SerializedName("name")
-    val title: String?,
+    val title: String,
     @SerializedName("overview")
-    val plot: String?,
+    val plot: String,
     @SerializedName("poster_path")
-    val posterPath: String?,
+    val posterPath: String,
 )

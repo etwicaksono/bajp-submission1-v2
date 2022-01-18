@@ -6,7 +6,6 @@ data class CatalogueModel(
     val type:String,
     val releaseDate: String,
     val year: String,
-    val genre: String,
     val title: String,
     val plot: String,
     val posterPath: String,

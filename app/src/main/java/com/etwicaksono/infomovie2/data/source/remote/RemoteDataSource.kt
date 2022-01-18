@@ -1,8 +1,8 @@
 package com.etwicaksono.infomovie2.data.source.remote
 
 import com.etwicaksono.infomovie2.data.source.remote.api.ApiConfig
-import com.etwicaksono.infomovie2.data.source.remote.response.Genre
 import com.etwicaksono.infomovie2.data.source.remote.response.MovieItem
+import com.etwicaksono.infomovie2.data.source.remote.response.TvShowItem
 import retrofit2.await
 
 class RemoteDataSource {
@@ -15,6 +15,16 @@ class RemoteDataSource {
 
     interface LoadMoviesCallback {
         fun onPopularMoviesReceived(movieItemResponse: List<MovieItem>)
+    }
+
+    suspend fun getPopularTvShow(callback: LoadTvShowsCallback) {
+        api.getPopularTvShow().await().result.let {
+            callback.onPopularTvShowsReceived(it)
+        }
+    }
+
+    interface LoadTvShowsCallback {
+        fun onPopularTvShowsReceived(tvShowsItemResponse: List<TvShowItem>)
     }
 
     /*fun getMovieDetail(movieId:Int,callback:LoadMovieDetailCallback){

@@ -54,14 +54,13 @@ class ListFragment : Fragment() {
             when (type) {
                 Helper.TYPE_MOVIE -> {
                     viewModel.getAllMovies().observe(viewLifecycleOwner, { listMovies ->
-                        binding?.rvFilm?.adapter.let { adapter ->
-                            when (adapter) {
-                                is ListAdapter -> listAdapter.setMovies(listMovies)
-                            }
-                        }
+                        binding?.rvFilm?.adapter.let { listAdapter.setList(listMovies) }
                     })
                 }
                 Helper.TYPE_TVSHOW -> {
+                    viewModel.getAllTvShows().observe(viewLifecycleOwner, { listTvShow ->
+                        binding?.rvFilm?.adapter.let { listAdapter.setList(listTvShow) }
+                    })
                 }
             }
 

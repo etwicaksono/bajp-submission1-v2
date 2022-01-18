@@ -1,10 +1,7 @@
 package com.etwicaksono.infomovie2.data.source.remote.api
 
 import com.etwicaksono.infomovie2.BuildConfig
-import com.etwicaksono.infomovie2.data.source.remote.response.Genre
-import com.etwicaksono.infomovie2.data.source.remote.response.ListResponse
-import com.etwicaksono.infomovie2.data.source.remote.response.MovieItem
-import com.etwicaksono.infomovie2.data.source.remote.response.ResponseRequestToken
+import com.etwicaksono.infomovie2.data.source.remote.response.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -29,6 +26,11 @@ interface ApiService {
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
     ): Call<MovieItem>
+
+    @GET("tv/popular")
+    fun getPopularTvShow(
+        @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
+    ): Call<ListResponse<TvShowItem>>
 
 
 }

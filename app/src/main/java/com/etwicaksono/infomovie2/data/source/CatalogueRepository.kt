@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.etwicaksono.infomovie2.data.CatalogueModel
 import com.etwicaksono.infomovie2.data.source.remote.RemoteDataSource
 import com.etwicaksono.infomovie2.data.source.remote.response.MovieItem
+import com.etwicaksono.infomovie2.data.source.remote.response.TvShowItem
 import com.etwicaksono.infomovie2.utils.Helper.getReleaseYear
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -18,16 +19,15 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
             remoteDataSource.getPopularMovies(object : RemoteDataSource.LoadMoviesCallback {
                 override fun onPopularMoviesReceived(movieItemResponse: List<MovieItem>) {
                     val movieList = ArrayList<CatalogueModel>()
-                    for (response in movieItemResponse) {
+                    for (res in movieItemResponse) {
                         val movie = CatalogueModel(
-                            response.id,
+                            res.id,
                             "movies",
-                            response.title,
-                            response.releaseDate,
-                            getReleaseYear(response.releaseDate, "-"),
-                            response.title,
-                            response.plot,
-                            response.posterPath,
+                            res.releaseDate,
+                            getReleaseYear(res.releaseDate, "-"),
+                            res.title,
+                            res.plot,
+                            res.posterPath,
                         )
                         movieList.add(movie)
                     }
@@ -38,20 +38,42 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
         return listMoviesResult
     }
 
-   /* override fun getMovieDetail(): LiveData<CatalogueModel> {
-        val movieResult=MutableLiveData<CatalogueModel>()
-        CoroutineScope(IO).launch {
-            remoteDataSource.get
-        }
-    }*/
+    /* override fun getMovieDetail(): LiveData<CatalogueModel> {
+         val movieResult=MutableLiveData<CatalogueModel>()
+         CoroutineScope(IO).launch {
+             remoteDataSource.get
+         }
+     }*/
 
     override fun getPopularTvShow(): LiveData<List<CatalogueModel>> {
-        TODO("Not yet implemented")
+        val listTvShowResult = MutableLiveData<List<CatalogueModel>>()
+        CoroutineScope(IO).launch {
+            remoteDataSource.getPopularTvShow(object : RemoteDataSource.LoadTvShowsCallback {
+                override fun onPopularTvShowsReceived(tvShowsItemResponse: List<TvShowItem>) {
+                    val tvShowList = ArrayList<CatalogueModel>()
+                    for (res in tvShowsItemResponse) {
+                        val show = CatalogueModel(
+                            res.id,
+                            "series",
+                            res.releaseDate,
+                            res.title,
+                            getReleaseYear(res.releaseDate, "-"),
+                            res.plot,
+                            res.posterPath
+                        )
+                        tvShowList.add(show)
+                    }
+                    listTvShowResult.postValue(tvShowList)
+                }
+
+            })
+        }
+        return listTvShowResult
     }
 
-  /*  override fun getTvShowDetail(): LiveData<CatalogueModel> {
-        TODO("Not yet implemented")
-    }*/
+    /*  override fun getTvShowDetail(): LiveData<CatalogueModel> {
+          TODO("Not yet implemented")
+      }*/
 
     companion object {
         @Volatile
