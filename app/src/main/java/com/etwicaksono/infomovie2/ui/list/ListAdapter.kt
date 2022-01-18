@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.etwicaksono.infomovie2.data.CatalogueModel
 import com.etwicaksono.infomovie2.databinding.ItemsRowMovieBinding
+import com.etwicaksono.infomovie2.utils.Helper
 
 class ListAdapter(private val onClick: (CatalogueModel) -> Unit) :
     RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
@@ -13,7 +14,13 @@ class ListAdapter(private val onClick: (CatalogueModel) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(catalogue: CatalogueModel) {
             with(binding) {
-                imgMovie.setImageResource(catalogue.posterPath!!)
+                imgMovie.let {
+                    Helper.setImageWithGlide(
+                        binding.root.context,
+                        Helper.API_IMAGE_ENDPOINT + Helper.ENDPOINT_POSTER_SIZE_W185 + catalogue.posterPath,
+                        it
+                    )
+                }
                 tvTitle.text = catalogue.title
                 tvReleaseDate.text = catalogue.releaseDate
                 tvPlot.text = catalogue.plot
