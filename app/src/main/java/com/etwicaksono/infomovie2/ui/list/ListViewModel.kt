@@ -1,20 +1,15 @@
 package com.etwicaksono.infomovie2.ui.list
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.etwicaksono.infomovie2.data.MovieModel
-import com.etwicaksono.infomovie2.utils.DataDummy
+import com.etwicaksono.infomovie2.data.source.MovieRepository
 
-class ListViewModel : ViewModel() {
+class ListViewModel(private val repo: MovieRepository) : ViewModel() {
 
-    lateinit var movie: List<MovieModel>
+    fun getAllMovies(): LiveData<List<MovieModel>> = repo.getPopularMovies()
 
-    fun getAllMovies() {
-        movie = DataDummy.getAllMovies()
-    }
-
-    fun getAllTvShows() {
-        movie = DataDummy.getAllTvShows()
-    }
+    fun getAllTvShows(): LiveData<List<MovieModel>> = repo.getPopularTvShow()
 
 
 }
