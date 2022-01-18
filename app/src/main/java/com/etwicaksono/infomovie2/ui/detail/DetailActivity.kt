@@ -8,6 +8,7 @@ import com.etwicaksono.infomovie2.databinding.ActivityDetailBinding
 import com.etwicaksono.infomovie2.utils.Helper
 import com.etwicaksono.infomovie2.utils.Helper.API_IMAGE_ENDPOINT
 import com.etwicaksono.infomovie2.utils.Helper.ENDPOINT_POSTER_SIZE_W780
+import com.etwicaksono.infomovie2.utils.Helper.getRuntime
 import com.etwicaksono.infomovie2.utils.Helper.setImageWithGlide
 import com.etwicaksono.infomovie2.viewmodel.ViewModelFactory
 
@@ -46,9 +47,10 @@ class DetailActivity : AppCompatActivity() {
                             ivBackDrop
                         )
                         tvReleaseDate.text = movie.releaseDate
-                        tvVote.text=movie.voteAverage
-                        tvGenre.text=movie.genres
-                        tvPlot.text=movie.overview
+                        tvVote.text = movie.voteAverage
+                        tvGenre.text = movie.genres
+                        tvPlot.text = movie.overview
+                        tvRuntime.text = movie.runtime?.let { getRuntime(it.toInt()) }
 
                         fab.setOnClickListener {
                             val selected = if (type == "movies") "movie" else "tv show"
