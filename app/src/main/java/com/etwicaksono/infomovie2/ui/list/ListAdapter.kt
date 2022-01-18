@@ -52,5 +52,6 @@ class ListAdapter(private val onClick: (CatalogueModel) -> Unit) :
         if (catalogues == null) return
         this.listMovies.clear()
         this.listMovies.addAll(catalogues)
+        notifyDataSetChanged()
     }
 }
