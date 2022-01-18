@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.etwicaksono.infomovie2.data.MovieModel
 import com.etwicaksono.infomovie2.data.source.remote.RemoteDataSource
 import com.etwicaksono.infomovie2.data.source.remote.response.Movie
+import com.etwicaksono.infomovie2.utils.getReleaseYear
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -23,6 +24,7 @@ class MovieRepository private constructor(private val remoteDataSource: RemoteDa
                             "movies",
                             response.title,
                             response.releaseDate,
+                            getReleaseYear(response.releaseDate,"-"),
 
                         )
                     }

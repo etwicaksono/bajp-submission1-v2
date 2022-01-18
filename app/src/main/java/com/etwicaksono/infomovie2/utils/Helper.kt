@@ -26,7 +26,15 @@ fun getRuntime(input: Int): String {
     } else "${minutes}m"
 }
 
-fun getAccessToken(context: Context):String?{
-    val sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key),Context.MODE_PRIVATE)
-    return sharedPref.getString(context.getString(R.string.saved_request_token),"")
+fun getAccessToken(context: Context): String? {
+    val sharedPref = context.getSharedPreferences(
+        context.getString(R.string.preference_file_key),
+        Context.MODE_PRIVATE
+    )
+    return sharedPref.getString(context.getString(R.string.saved_request_token), "")
+}
+
+fun getReleaseYear(releaseDate: String, separator: String = "/"): String {
+    val arr = releaseDate.split(separator).toTypedArray()
+    return arr[0]
 }
