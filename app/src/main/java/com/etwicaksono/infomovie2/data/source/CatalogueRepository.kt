@@ -6,6 +6,7 @@ import com.etwicaksono.infomovie2.data.CatalogueModel
 import com.etwicaksono.infomovie2.data.DetailItemModel
 import com.etwicaksono.infomovie2.data.source.remote.RemoteDataSource
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseDetailMovie
+import com.etwicaksono.infomovie2.data.source.remote.response.ResponseDetailTv
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseMovieItem
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseTvShowItem
 import com.etwicaksono.infomovie2.utils.Helper.TYPE_MOVIE
@@ -95,8 +96,29 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
         return listTvShowResult
     }
 
-    override fun getTvShowDetail(movieId: Int): LiveData<CatalogueModel> {
-        TODO("Not yet implemented")
+    override fun getTvShowDetail(tvId: Int): LiveData<DetailItemModel> {
+        val tvResult = MutableLiveData<DetailItemModel>()
+        CoroutineScope(IO).launch {
+            remoteDataSource.getTvDetail(tvId,object :RemoteDataSource.LoadTvDetailCallback{
+                override fun onTvDetailReceived(res: ResponseDetailTv) {
+                    val tv = DetailItemModel(
+                        res.backdropPath,
+                        getGenres(res.genres),
+                        res.id,
+                        res.overview,
+                        res.posterPath,
+                        res.releaseDate,
+                        res.releaseDate?.let { getReleaseYear(it) },
+                        res.runtime?.get(0)?.let { getRuntime(it) },
+                        res.title,
+                        res.voteAverage.toString()
+                    )
+                    tvResult.postValue(tv)
+                }
+
+            })
+        }
+        return tvResult
     }
 
 

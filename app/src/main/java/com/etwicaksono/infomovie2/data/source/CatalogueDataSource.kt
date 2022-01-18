@@ -9,5 +9,5 @@ interface CatalogueDataSource {
     fun getPopularMovies(): LiveData<List<CatalogueModel>>
     fun getMovieDetail(movieId:Int): LiveData<DetailItemModel>
     fun getPopularTvShow(): LiveData<List<CatalogueModel>>
-    fun getTvShowDetail(movieId:Int): LiveData<CatalogueModel>
+    fun getTvShowDetail(tvId:Int): LiveData<DetailItemModel>
 }

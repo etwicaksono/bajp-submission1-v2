@@ -9,4 +9,7 @@ class DetailViewModel(private val catalogueRepository: CatalogueRepository) : Vi
 
     fun getMovieDetail(movieId: Int): LiveData<DetailItemModel> =
         catalogueRepository.getMovieDetail(movieId)
+
+    fun getTvDetail(tvId: Int): LiveData<DetailItemModel> =
+        catalogueRepository.getTvShowDetail(tvId)
 }

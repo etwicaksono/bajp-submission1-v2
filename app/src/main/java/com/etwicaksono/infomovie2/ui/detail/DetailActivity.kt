@@ -11,6 +11,7 @@ import com.etwicaksono.infomovie2.R
 import com.etwicaksono.infomovie2.databinding.ActivityDetailBinding
 import com.etwicaksono.infomovie2.utils.Helper
 import com.etwicaksono.infomovie2.utils.Helper.API_IMAGE_ENDPOINT
+import com.etwicaksono.infomovie2.utils.Helper.ENDPOINT_POSTER_SIZE_W185
 import com.etwicaksono.infomovie2.utils.Helper.ENDPOINT_POSTER_SIZE_W780
 import com.etwicaksono.infomovie2.utils.Helper.TYPE_MOVIE
 import com.etwicaksono.infomovie2.utils.Helper.setImageWithGlide
@@ -39,13 +40,13 @@ class DetailActivity : AppCompatActivity() {
         )[DetailViewModel::class.java]
 
         when (type) {
-            Helper.TYPE_MOVIE -> {
+            TYPE_MOVIE -> {
                 viewModel.getMovieDetail(id).observe(this, { movie ->
                     binding.apply {
                         tvTitle.text = movie.title
                         setImageWithGlide(
                             this@DetailActivity,
-                            API_IMAGE_ENDPOINT + ENDPOINT_POSTER_SIZE_W780 + movie.posterPath,
+                            API_IMAGE_ENDPOINT + ENDPOINT_POSTER_SIZE_W185 + movie.posterPath,
                             ivPoster
                         )
                         setImageWithGlide(
@@ -81,15 +82,24 @@ class DetailActivity : AppCompatActivity() {
 
             }
             Helper.TYPE_TVSHOW -> {
-                viewModel.getMovieDetail(id).observe(this, { movie ->
+                viewModel.getTvDetail(id).observe(this, { movie ->
                     binding.apply {
                         tvTitle.text = movie.title
                         setImageWithGlide(
                             this@DetailActivity,
-                            API_IMAGE_ENDPOINT + ENDPOINT_POSTER_SIZE_W780 + movie.posterPath,
+                            API_IMAGE_ENDPOINT + ENDPOINT_POSTER_SIZE_W185 + movie.posterPath,
                             ivPoster
                         )
+                        setImageWithGlide(
+                            this@DetailActivity,
+                            API_IMAGE_ENDPOINT + ENDPOINT_POSTER_SIZE_W780 + movie.backdropPath,
+                            ivBackDrop
+                        )
                         tvReleaseDate.text = movie.releaseDate
+                        tvVote.text = movie.voteAverage
+                        tvGenre.text = movie.genres
+                        tvPlot.text = movie.overview
+                        tvRuntime.text = movie.runtime
 
                         fab.setOnClickListener {
                             val selected = if (type == "movies") "movie" else "tv show"
