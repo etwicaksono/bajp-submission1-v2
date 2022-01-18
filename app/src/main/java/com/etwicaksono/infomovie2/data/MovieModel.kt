@@ -6,6 +6,7 @@ data class MovieModel(
     val type:String,
     val backdropPath: String,
     val releaseDate: String,
+    val year: String,
     val genre: String,
     val title: String,
     val plot: String,
