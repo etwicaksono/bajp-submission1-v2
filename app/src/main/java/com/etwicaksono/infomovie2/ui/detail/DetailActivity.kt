@@ -21,6 +21,9 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         val id = intent.getIntExtra(EXTRA_ID, 1)
         val type = intent.getStringExtra(EXTRA_TYPE)
