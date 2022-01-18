@@ -14,7 +14,7 @@ interface ApiService {
     @GET("movie/popular")
     fun getPopularMovie(
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Call<ListResponse<MovieItem>>
+    ): Call<ResponseCatalogue<ResponseMovieItem>>
 
     @GET("genre/movie/list")
     fun getMovieGenres(
@@ -25,12 +25,12 @@ interface ApiService {
     fun getDetailMovie(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Call<MovieItem>
+    ): Call<ResponseDetailMovie>
 
     @GET("tv/popular")
     fun getPopularTvShow(
         @Query("api_key") apiKey: String = BuildConfig.TMDB_API_KEY
-    ): Call<ListResponse<TvShowItem>>
+    ): Call<ResponseCatalogue<ResponseTvShowItem>>
 
 
 }

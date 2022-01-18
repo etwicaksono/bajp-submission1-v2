@@ -2,7 +2,7 @@ package com.etwicaksono.infomovie2.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class TvShowItem(
+data class ResponseTvShowItem(
     @SerializedName("id")
     val id: Int,
     @SerializedName("first_air_date")
