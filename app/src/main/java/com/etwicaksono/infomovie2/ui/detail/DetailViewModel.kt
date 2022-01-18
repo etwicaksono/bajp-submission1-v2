@@ -1,14 +1,14 @@
 package com.etwicaksono.infomovie2.ui.detail
 
 import androidx.lifecycle.ViewModel
-import com.etwicaksono.infomovie2.data.MovieModel
+import com.etwicaksono.infomovie2.data.CatalogueModel
 import com.etwicaksono.infomovie2.utils.DataDummy
 
 class DetailViewModel : ViewModel() {
 
     private var itemId: Int = 1
     private lateinit var type: String
-    lateinit var item: MovieModel
+    lateinit var item: CatalogueModel
 
     fun setSelectedItem(type: String?, id: Int?) {
         if (type != null) {

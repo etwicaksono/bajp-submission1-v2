@@ -1,14 +1,14 @@
 package com.etwicaksono.infomovie2.utils
 
 import com.etwicaksono.infomovie2.R
-import com.etwicaksono.infomovie2.data.MovieModel
+import com.etwicaksono.infomovie2.data.CatalogueModel
 
 object DataDummy {
-    fun getAllMovies(): List<MovieModel> {
-        val movies = ArrayList<MovieModel>()
+    fun getAllMovies(): List<CatalogueModel> {
+        val movies = ArrayList<CatalogueModel>()
 
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 1,
                 "movies",
                 "ALITA: BATTLE ANGEL",
@@ -23,7 +23,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 2,
                 "movies",
                 "AQUAMAN",
@@ -38,7 +38,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 3,
                 "movies",
                 "A STAR IS BORN",
@@ -53,7 +53,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 4,
                 "movies",
                 "BOHEMIAN RHAPSODY",
@@ -68,7 +68,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 5,
                 "movies",
                 "COLD PURSUIT",
@@ -83,7 +83,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 6,
                 "movies",
                 "CREED II",
@@ -98,7 +98,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 7,
                 "movies",
                 "FANTASTIC BEAST: THE CRIMES OF GRINDELWALD",
@@ -113,7 +113,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 8,
                 "movies",
                 "GLASS",
@@ -128,7 +128,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 9,
                 "movies",
                 "HOW TO TRAIN YOUR DRAGON",
@@ -143,7 +143,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 10,
                 "movies",
                 "AVENGERS: INFINITY WAR",
@@ -158,7 +158,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 11,
                 "movies",
                 "MARRY QUEEN",
@@ -173,7 +173,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 12,
                 "movies",
                 "MASTER Z: IP MAN LEGACY",
@@ -188,7 +188,7 @@ object DataDummy {
             )
         )
         movies.add(
-            MovieModel(
+            CatalogueModel(
                 13,
                 "movies",
                 "MORTAL ENGINES",
@@ -207,11 +207,11 @@ object DataDummy {
 
     }
 
-    fun getAllTvShows(): List<MovieModel> {
-        val series = ArrayList<MovieModel>()
+    fun getAllTvShows(): List<CatalogueModel> {
+        val series = ArrayList<CatalogueModel>()
 
         series.add(
-            MovieModel(
+            CatalogueModel(
                 1,
                 "series",
                 "ARROW",
@@ -226,7 +226,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 2,
                 "series",
                 "DOOM PATROL",
@@ -241,7 +241,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 3,
                 "series",
                 "DRAGON BALL",
@@ -256,7 +256,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 4,
                 "series",
                 "FAIRYTAIL",
@@ -271,7 +271,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 5,
                 "series",
                 "FAMILY GUY",
@@ -286,7 +286,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 6,
                 "series",
                 "FLASH",
@@ -301,7 +301,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 7,
                 "series",
                 "GOT",
@@ -316,7 +316,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 8,
                 "series",
                 "GOTHAM",
@@ -331,7 +331,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 9,
                 "series",
                 "GREY'S ANATOMY",
@@ -346,7 +346,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 10,
                 "series",
                 "HANNA",
@@ -361,7 +361,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 11,
                 "series",
                 "MARVEL'S IRON FIST",
@@ -376,7 +376,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 12,
                 "series",
                 "NARUTO SHIPUDDEN",
@@ -391,7 +391,7 @@ object DataDummy {
             )
         )
         series.add(
-            MovieModel(
+            CatalogueModel(
                 13,
                 "series",
                 "NCIS",

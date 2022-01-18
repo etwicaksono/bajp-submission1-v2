@@ -1,7 +1,7 @@
 package com.etwicaksono.infomovie2.data
 
 
-data class MovieModel(
+data class CatalogueModel(
     val id: Int,
     val type:String,
     val backdropPath: String,

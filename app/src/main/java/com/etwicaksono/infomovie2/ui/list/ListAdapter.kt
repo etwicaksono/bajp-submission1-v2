@@ -3,30 +3,30 @@ package com.etwicaksono.infomovie2.ui.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.etwicaksono.infomovie2.data.MovieModel
+import com.etwicaksono.infomovie2.data.CatalogueModel
 import com.etwicaksono.infomovie2.databinding.ItemsRowMovieBinding
 
-class ListAdapter(private val onClick: (MovieModel) -> Unit) :
+class ListAdapter(private val onClick: (CatalogueModel) -> Unit) :
     RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     inner class ListViewHolder(private val binding: ItemsRowMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: MovieModel) {
+        fun bind(catalogue: CatalogueModel) {
             with(binding) {
-                imgMovie.setImageResource(movie.poster!!)
-                tvTitle.text = movie.title
-                tvReleaseDate.text = movie.releaseDate
-                tvPlot.text = movie.plot
+                imgMovie.setImageResource(catalogue.poster!!)
+                tvTitle.text = catalogue.title
+                tvReleaseDate.text = catalogue.releaseDate
+                tvPlot.text = catalogue.plot
 
                 itemRowMovie.setOnClickListener {
-                    onClick(movie)
+                    onClick(catalogue)
                 }
             }
         }
 
     }
 
-    private val listMovies = ArrayList<MovieModel>()
+    private val listMovies = ArrayList<CatalogueModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter.ListViewHolder {
         val binding =
@@ -41,9 +41,9 @@ class ListAdapter(private val onClick: (MovieModel) -> Unit) :
 
     override fun getItemCount(): Int = listMovies.size
 
-    fun setMovies(movies: List<MovieModel>?) {
-        if (movies == null) return
+    fun setMovies(catalogues: List<CatalogueModel>?) {
+        if (catalogues == null) return
         this.listMovies.clear()
-        this.listMovies.addAll(movies)
+        this.listMovies.addAll(catalogues)
     }
 }
