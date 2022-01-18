@@ -8,6 +8,9 @@ import com.etwicaksono.infomovie2.data.source.remote.RemoteDataSource
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseDetailMovie
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseMovieItem
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseTvShowItem
+import com.etwicaksono.infomovie2.utils.Helper.TYPE_MOVIE
+import com.etwicaksono.infomovie2.utils.Helper.TYPE_TVSHOW
+import com.etwicaksono.infomovie2.utils.Helper.getGenres
 import com.etwicaksono.infomovie2.utils.Helper.getReleaseYear
 import com.etwicaksono.infomovie2.utils.Helper.getRuntime
 import kotlinx.coroutines.CoroutineScope
@@ -25,7 +28,7 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
                     for (res in res) {
                         val movie = CatalogueModel(
                             res.id,
-                            "movies",
+                            TYPE_MOVIE,
                             res.releaseDate,
                             getReleaseYear(res.releaseDate, "-"),
                             res.title,
@@ -48,7 +51,7 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
                 override fun onMoviedetailReceived(res: ResponseDetailMovie) {
                     val movie = DetailItemModel(
                         res.backdropPath,
-                        "genres",
+                        getGenres(res.genres),
                         res.id,
                         res.overview,
                         res.posterPath,
@@ -75,7 +78,7 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
                     for (res in res) {
                         val show = CatalogueModel(
                             res.id,
-                            "series",
+                            TYPE_TVSHOW,
                             res.releaseDate,
                             getReleaseYear(res.releaseDate, "-"),
                             res.title,

@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.etwicaksono.infomovie2.R
+import com.etwicaksono.infomovie2.data.source.remote.response.Genre
 import java.io.IOException
 import kotlin.math.floor
 
@@ -15,7 +16,7 @@ object Helper {
     const val ENDPOINT_POSTER_SIZE_W185 = "w185"
     const val ENDPOINT_POSTER_SIZE_W780 = "w780"
 
-    fun setImageWithGlide(context: Context,imagePath:String,imageView:ImageView){
+    fun setImageWithGlide(context: Context, imagePath: String, imageView: ImageView) {
         Glide.with(context).clear(imageView)
         Glide.with(context).load(imagePath).into(imageView)
     }
@@ -52,5 +53,16 @@ object Helper {
     fun getReleaseYear(releaseDate: String, separator: String = "/"): String {
         val arr = releaseDate.split(separator).toTypedArray()
         return arr[0]
+    }
+
+    fun getGenres(genres: List<Genre>?): String {
+        val output = ArrayList<String>()
+        if (genres != null) {
+            for (genre in genres) {
+                genre.name?.let { output.add(it) }
+            }
+        }
+
+        return output.joinToString(", ")
     }
 }

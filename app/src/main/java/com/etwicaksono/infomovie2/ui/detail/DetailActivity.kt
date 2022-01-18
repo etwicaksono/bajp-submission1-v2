@@ -40,7 +40,15 @@ class DetailActivity : AppCompatActivity() {
                             API_IMAGE_ENDPOINT + ENDPOINT_POSTER_SIZE_W780 + movie.posterPath,
                             ivPoster
                         )
+                        setImageWithGlide(
+                            this@DetailActivity,
+                            API_IMAGE_ENDPOINT + ENDPOINT_POSTER_SIZE_W780 + movie.backdropPath,
+                            ivBackDrop
+                        )
                         tvReleaseDate.text = movie.releaseDate
+                        tvVote.text=movie.voteAverage
+                        tvGenre.text=movie.genres
+                        tvPlot.text=movie.overview
 
                         fab.setOnClickListener {
                             val selected = if (type == "movies") "movie" else "tv show"
