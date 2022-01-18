@@ -50,7 +50,7 @@ class DetailActivity : AppCompatActivity() {
                         tvVote.text = movie.voteAverage
                         tvGenre.text = movie.genres
                         tvPlot.text = movie.overview
-                        tvRuntime.text = movie.runtime?.let { getRuntime(it.toInt()) }
+                        tvRuntime.text = movie.runtime
 
                         fab.setOnClickListener {
                             val selected = if (type == "movies") "movie" else "tv show"
