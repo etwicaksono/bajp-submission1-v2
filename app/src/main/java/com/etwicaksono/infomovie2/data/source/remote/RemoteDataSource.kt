@@ -1,6 +1,7 @@
 package com.etwicaksono.infomovie2.data.source.remote
 
 import com.etwicaksono.infomovie2.data.source.remote.api.ApiConfig
+import com.etwicaksono.infomovie2.data.source.remote.response.Genre
 import com.etwicaksono.infomovie2.data.source.remote.response.Movie
 import retrofit2.await
 
@@ -10,6 +11,20 @@ class RemoteDataSource {
         api.getPopularMovie().await().result.let {
             callback.onPopularMoviesReceived(it)
         }
+    }
+
+    interface LoadMoviesCallback {
+        fun onPopularMoviesReceived(movieResponse: List<Movie>)
+    }
+
+    suspend fun getMovieGenres(callback: LoadMovieGenredCallback) {
+        api.getMovieGenres().await().let {
+            callback.onMovieGenresReceived(it)
+        }
+    }
+
+    interface LoadMovieGenredCallback {
+        fun onMovieGenresReceived(genres: List<Genre>)
     }
 
     companion object {
@@ -24,8 +39,5 @@ class RemoteDataSource {
 
     }
 
-    interface LoadMoviesCallback {
-        fun onPopularMoviesReceived(movieResponse: List<Movie>)
-    }
 }
 
