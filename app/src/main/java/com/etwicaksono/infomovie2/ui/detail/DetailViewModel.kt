@@ -2,9 +2,10 @@ package com.etwicaksono.infomovie2.ui.detail
 
 import androidx.lifecycle.ViewModel
 import com.etwicaksono.infomovie2.data.CatalogueModel
+import com.etwicaksono.infomovie2.data.source.CatalogueRepository
 import com.etwicaksono.infomovie2.utils.DataDummy
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel(private val catalogueRepository:CatalogueRepository) : ViewModel() {
 
     private var itemId: Int = 1
     private lateinit var type: String

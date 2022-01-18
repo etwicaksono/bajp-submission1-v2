@@ -13,13 +13,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.etwicaksono.infomovie2.R
 import com.etwicaksono.infomovie2.utils.DataDummy
-import com.etwicaksono.infomovie2.utils.getRuntime
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.lang.Thread.sleep
 
+/*
 @RunWith(AndroidJUnit4::class)
 class HomeActivityTest {
     private val context: Context = ApplicationProvider.getApplicationContext()
@@ -149,4 +149,4 @@ class HomeActivityTest {
         }
         onView(withId(R.id.fab)).check(matches(isDisplayed()))
     }
-}
+}*/

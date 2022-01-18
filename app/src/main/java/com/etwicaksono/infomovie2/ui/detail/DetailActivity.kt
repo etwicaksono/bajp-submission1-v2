@@ -4,9 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
-import com.etwicaksono.infomovie2.R
 import com.etwicaksono.infomovie2.databinding.ActivityDetailBinding
-import com.etwicaksono.infomovie2.utils.getRuntime
+import com.etwicaksono.infomovie2.utils.Helper.API_IMAGE_ENDPOINT
+import com.etwicaksono.infomovie2.utils.Helper.ENDPOINT_POSTER_SIZE_W780
+import com.etwicaksono.infomovie2.utils.Helper.setImageWithGlide
 
 class DetailActivity : AppCompatActivity() {
 
@@ -27,22 +28,21 @@ class DetailActivity : AppCompatActivity() {
         )[DetailViewModel::class.java]
         viewModel.setSelectedItem(type, id)
         viewModel.getItem()
-        val movie = viewModel.item
+        val item = viewModel.item
 
         binding.apply {
-            tvTitle.text = movie.title
-            tvGenre.text = movie.genres
-            ivPoster.setImageResource(movie.poster!!)
-            tvReleaseDate.text = movie.releaseDate
-            tvVote.text = movie.runtime?.let { getRuntime(it.toInt()) }
-            tvPlot.text = movie.plot
-            tvDirector.text = movie.director
-            tvActors.text = movie.actors
-            tvHeader.text =
-                if (movie.type == "movies") getString(R.string.detail_movie) else getString(R.string.detail_tv_show)
+            tvTitle.text = item.title
+            ivPoster.let {
+                setImageWithGlide(
+                    this@DetailActivity,
+                    API_IMAGE_ENDPOINT + ENDPOINT_POSTER_SIZE_W780 + item.posterPath,
+                    it
+                )
+            }
+            tvReleaseDate.text = item.releaseDate
 
             fab.setOnClickListener {
-                val selected = if (movie.type == "movies") "movie" else "tv show"
+                val selected = if (item.type == "movies") "movie" else "tv show"
                 val mimeType = "text/plain"
                 ShareCompat.IntentBuilder
                     .from(this@DetailActivity)
@@ -51,10 +51,9 @@ class DetailActivity : AppCompatActivity() {
                     .setText(
                         """
                         Ada $selected seru loh, yuk nonton sekarang! Nih aku kasih infonya.
-                        Movie : ${movie.title}
-                        Genre : ${movie.genres}
-                        Tahun : ${movie.year}
-                        Sinopsis : ${movie.plot}
+                        Movie : ${item.title}
+                        Tahun : ${item.year}
+                        Sinopsis : ${item.plot}
                     """.trimIndent()
                     )
                     .startChooser()

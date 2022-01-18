@@ -9,10 +9,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.etwicaksono.infomovie2.R
 import com.etwicaksono.infomovie2.data.CatalogueModel
 import com.etwicaksono.infomovie2.databinding.FragmentListBinding
 import com.etwicaksono.infomovie2.ui.detail.DetailActivity
+import com.etwicaksono.infomovie2.utils.Helper
+import com.etwicaksono.infomovie2.viewmodel.ViewModelFactory
 
 class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
@@ -40,9 +41,10 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
+            val factory = ViewModelFactory.getInstance()
             viewModel = ViewModelProvider(
                 this,
-                ViewModelProvider.NewInstanceFactory()
+                factory
             )[ListViewModel::class.java]
 
             listAdapter = ListAdapter {
@@ -50,12 +52,14 @@ class ListFragment : Fragment() {
             }
 
             when (type) {
-                resources.getString(R.string.movies) ->
-                    viewModel.getAllMovies()
-                resources.getString(R.string.tv_shows) ->
-                    viewModel.getAllTvShows()
+                Helper.TYPE_MOVIE -> {
+
+                }
+                Helper.TYPE_TVSHOW -> {
+
+                }
             }
-            listAdapter.setMovies(viewModel.movie)
+
 
             binding?.rvFilm?.apply {
                 layoutManager = LinearLayoutManager(context)

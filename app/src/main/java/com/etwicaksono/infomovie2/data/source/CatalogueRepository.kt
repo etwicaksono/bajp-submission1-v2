@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import com.etwicaksono.infomovie2.data.CatalogueModel
 import com.etwicaksono.infomovie2.data.source.remote.RemoteDataSource
 import com.etwicaksono.infomovie2.data.source.remote.response.MovieItem
-import com.etwicaksono.infomovie2.utils.getReleaseYear
+import com.etwicaksono.infomovie2.utils.Helper.getReleaseYear
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class MovieRepository private constructor(private val remoteDataSource: RemoteDataSource) :
-    MovieDataSource {
+class CatalogueRepository private constructor(private val remoteDataSource: RemoteDataSource) :
+    CatalogueDataSource {
     override fun getPopularMovies(): LiveData<List<CatalogueModel>> {
         val listMoviesResult = MutableLiveData<List<CatalogueModel>>()
         CoroutineScope(IO).launch {
@@ -25,11 +25,9 @@ class MovieRepository private constructor(private val remoteDataSource: RemoteDa
                             response.title,
                             response.releaseDate,
                             getReleaseYear(response.releaseDate, "-"),
-                            response.genreIds.joinToString(", "),
                             response.title,
                             response.plot,
                             response.posterPath,
-                            response.vote
                         )
                         movieList.add(movie)
                     }
@@ -40,28 +38,28 @@ class MovieRepository private constructor(private val remoteDataSource: RemoteDa
         return listMoviesResult
     }
 
-    override fun getMovieDetail(): LiveData<CatalogueModel> {
+   /* override fun getMovieDetail(): LiveData<CatalogueModel> {
         val movieResult=MutableLiveData<CatalogueModel>()
         CoroutineScope(IO).launch {
             remoteDataSource.get
         }
-    }
+    }*/
 
     override fun getPopularTvShow(): LiveData<List<CatalogueModel>> {
         TODO("Not yet implemented")
     }
 
-    override fun getTvShowDetail(): LiveData<CatalogueModel> {
+  /*  override fun getTvShowDetail(): LiveData<CatalogueModel> {
         TODO("Not yet implemented")
-    }
+    }*/
 
     companion object {
         @Volatile
-        private var instance: MovieRepository? = null
+        private var instance: CatalogueRepository? = null
 
-        fun getInstance(remoteDataSource: RemoteDataSource): MovieRepository =
+        fun getInstance(remoteDataSource: RemoteDataSource): CatalogueRepository =
             instance ?: synchronized(this) {
-                instance ?: MovieRepository(remoteDataSource)
+                instance ?: CatalogueRepository(remoteDataSource)
             }
     }
 }

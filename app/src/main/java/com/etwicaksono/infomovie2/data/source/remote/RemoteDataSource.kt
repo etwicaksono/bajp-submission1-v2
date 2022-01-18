@@ -17,7 +17,7 @@ class RemoteDataSource {
         fun onPopularMoviesReceived(movieItemResponse: List<MovieItem>)
     }
 
-    fun getMovieDetail(movieId:Int,callback:LoadMovieDetailCallback){
+    /*fun getMovieDetail(movieId:Int,callback:LoadMovieDetailCallback){
         api.get
     }
 
@@ -33,7 +33,7 @@ class RemoteDataSource {
 
     interface LoadMovieGenredCallback {
         fun onMovieGenresReceived(genres: List<Genre>)
-    }
+    }*/
 
     companion object {
         private val api = ApiConfig.getApiService()

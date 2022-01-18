@@ -22,6 +22,6 @@ class ListPagerAdapter(private val mContext: Context, fm: FragmentManager) :
 
 
     companion object {
-        private val TAB_TITLES = listOf<String>(Helper.TYPE_MOVIE, Helper.TYPE_TVSHOW)
+        private val TAB_TITLES = listOf(Helper.TYPE_MOVIE, Helper.TYPE_TVSHOW)
     }
 }
