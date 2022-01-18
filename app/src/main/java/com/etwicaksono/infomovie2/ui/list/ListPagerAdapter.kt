@@ -6,22 +6,22 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.etwicaksono.infomovie2.R
+import com.etwicaksono.infomovie2.utils.Helper
 
 class ListPagerAdapter(private val mContext: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     override fun getCount(): Int = 2
 
     override fun getItem(position: Int): Fragment {
-        return ListFragment.newInstance(mContext.resources.getString(TAB_TITLES[position]))
+        return ListFragment.newInstance(TAB_TITLES[position])
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        return mContext.resources.getString(TAB_TITLES[position])
+        return TAB_TITLES[position]
     }
 
 
     companion object {
-        @StringRes
-        private val TAB_TITLES = intArrayOf(R.string.movies, R.string.tv_shows)
+        private val TAB_TITLES = listOf<String>(Helper.TYPE_MOVIE, Helper.TYPE_TVSHOW)
     }
 }
