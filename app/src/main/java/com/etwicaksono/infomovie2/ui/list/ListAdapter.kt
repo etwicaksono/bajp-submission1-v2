@@ -21,7 +21,7 @@ class ListAdapter(private val onClick: (CatalogueModel) -> Unit) :
                         it
                     )
                 }
-                tvTitle.text = catalogue.title
+                "${catalogue.title} (${catalogue.year})".also { tvTitle.text = it }
                 tvReleaseDate.text = catalogue.releaseDate
                 tvPlot.text = catalogue.plot
 

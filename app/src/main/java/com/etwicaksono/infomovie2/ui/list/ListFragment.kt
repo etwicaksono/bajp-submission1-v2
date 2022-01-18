@@ -51,15 +51,31 @@ class ListFragment : Fragment() {
                 showSelectedData(it)
             }
 
+            binding?.apply {
+                tvNoData.visibility = View.VISIBLE
+                progressBarWrapper.progressBar.visibility = View.VISIBLE
+            }
             when (type) {
                 Helper.TYPE_MOVIE -> {
                     viewModel.getAllMovies().observe(viewLifecycleOwner, { listMovies ->
-                        binding?.rvFilm?.adapter.let { listAdapter.setList(listMovies) }
+                        binding?.rvFilm?.adapter.let {
+                            listAdapter.setList(listMovies)
+                            binding?.apply {
+                                tvNoData.visibility = View.GONE
+                                progressBarWrapper.progressBar.visibility = View.GONE
+                            }
+                        }
                     })
                 }
                 Helper.TYPE_TVSHOW -> {
                     viewModel.getAllTvShows().observe(viewLifecycleOwner, { listTvShow ->
-                        binding?.rvFilm?.adapter.let { listAdapter.setList(listTvShow) }
+                        binding?.rvFilm?.adapter.let {
+                            listAdapter.setList(listTvShow)
+                            binding?.apply {
+                                tvNoData.visibility = View.GONE
+                                progressBarWrapper.progressBar.visibility = View.GONE
+                            }
+                        }
                     })
                 }
             }

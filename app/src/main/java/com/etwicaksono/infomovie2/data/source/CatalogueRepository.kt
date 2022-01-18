@@ -56,8 +56,8 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
                             res.id,
                             "series",
                             res.releaseDate,
-                            res.title,
                             getReleaseYear(res.releaseDate, "-"),
+                            res.title,
                             res.plot,
                             res.posterPath
                         )

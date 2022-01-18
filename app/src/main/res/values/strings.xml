@@ -12,4 +12,5 @@
     <string name="preference_file_key">request_token</string>
     <string name="saved_request_token">saved_request_token</string>
     <string name="backdrop">Backdrop</string>
+    <string name="no_data_received">No data received</string>
 </resources>
