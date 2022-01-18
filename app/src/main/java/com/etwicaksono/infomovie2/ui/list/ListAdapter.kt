@@ -13,7 +13,7 @@ class ListAdapter(private val onClick: (CatalogueModel) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(catalogue: CatalogueModel) {
             with(binding) {
-                imgMovie.setImageResource(catalogue.poster!!)
+                imgMovie.setImageResource(catalogue.posterPath!!)
                 tvTitle.text = catalogue.title
                 tvReleaseDate.text = catalogue.releaseDate
                 tvPlot.text = catalogue.plot
