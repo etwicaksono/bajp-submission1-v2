@@ -5,7 +5,6 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.etwicaksono.infomovie2.R
 import com.etwicaksono.infomovie2.data.source.remote.response.Genre
-import java.io.IOException
 import kotlin.math.floor
 
 object Helper {

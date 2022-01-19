@@ -12,7 +12,7 @@ class HomeActivity : AppCompatActivity() {
         val binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val listPagerAdapter = ListPagerAdapter(this, supportFragmentManager)
+        val listPagerAdapter = ListPagerAdapter(supportFragmentManager)
         binding.apply {
             viewPager.adapter = listPagerAdapter
             tabs.setupWithViewPager(binding.viewPager)

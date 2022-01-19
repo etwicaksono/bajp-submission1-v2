@@ -3,7 +3,6 @@ package com.etwicaksono.infomovie2.data.source
 import androidx.lifecycle.LiveData
 import com.etwicaksono.infomovie2.data.CatalogueModel
 import com.etwicaksono.infomovie2.data.DetailItemModel
-import com.etwicaksono.infomovie2.data.source.remote.response.ResponseDetailMovie
 
 interface CatalogueDataSource {
     fun getPopularMovies(): LiveData<List<CatalogueModel>>
