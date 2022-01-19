@@ -9,8 +9,9 @@ import kotlin.math.floor
 
 object Helper {
 
-    const val TYPE_MOVIE = "TYPE_MOVIE"
-    const val TYPE_TVSHOW = "TYPE_TVSHOW"
+    const val TYPE_MOVIE = "MOVIE"
+    const val TYPE_TVSHOW = "TV SHOW"
+    val TAB_TITLES = listOf(TYPE_MOVIE, TYPE_TVSHOW)
     const val API_IMAGE_ENDPOINT = "https://image.tmdb.org/t/p/"
     const val ENDPOINT_POSTER_SIZE_W185 = "w185"
     const val ENDPOINT_POSTER_SIZE_W780 = "w780"
