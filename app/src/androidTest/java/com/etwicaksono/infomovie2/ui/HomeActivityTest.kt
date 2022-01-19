@@ -10,7 +10,6 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import com.etwicaksono.infomovie2.R
-import com.etwicaksono.infomovie2.utils.DataDummy
 import com.etwicaksono.infomovie2.utils.EspressoIdlingResource
 import com.etwicaksono.infomovie2.utils.Helper.getRuntime
 import org.hamcrest.CoreMatchers.allOf
@@ -21,10 +20,6 @@ import org.junit.Test
 import java.lang.Thread.sleep
 
 class HomeActivityTest {
-    private val dummyListMovie = DataDummy.getAllMoviesDummy()
-    private val dummyListTvShow = DataDummy.getAllTvShowsDummy()
-    private val dummyMovie = DataDummy.getMovieDummy()
-    private val dummyTvShow = DataDummy.getTvShowDummy()
 
     @get:Rule
     var activityRule = ActivityTestRule(HomeActivity::class.java)
@@ -42,11 +37,8 @@ class HomeActivityTest {
 
     @Test
     fun loadMovie() {
-        onView(withId(R.id.rv_film)).check(matches(isDisplayed()))
         onView(allOf(withId(R.id.rv_film), isDisplayed())).perform(
-            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
-                dummyListMovie.size
-            )
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(15)
         )
     }
 
@@ -58,49 +50,28 @@ class HomeActivityTest {
                 0, click()
             )
         )
-        onView(withId(R.id.tv_title)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyListMovie[0].title)))
-        }
-        onView(withId(R.id.tv_genre)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyMovie.genres)))
-        }
-        onView(withId(R.id.tv_release_date)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyMovie.releaseDate)))
-        }
+        onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_genre)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_runtime)).check(matches(isDisplayed()))
         onView(withId(R.id.iv_poster)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_vote)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyMovie.runtime?.let {
-                getRuntime(
-                    it.toInt()
-                )
-            })))
-        }
-        onView(withId(R.id.tv_plot)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyMovie.overview)))
-        }
+        onView(withId(R.id.iv_back_drop)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_vote)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_plot)).check(matches(isDisplayed()))
         onView(withId(R.id.fab)).check(matches(isDisplayed()))
     }
 
     @Test
     fun loadTVShow() {
-        onView(allOf(withId(R.id.rv_film), isDisplayed()))
         onView(withId(R.id.view_pager)).perform(ViewActions.swipeLeft())
         sleep(1000)
         onView(allOf(withId(R.id.rv_film), isDisplayed())).perform(
-            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
-                dummyListTvShow.size
-            )
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(15)
         )
     }
 
     @Test
     fun loadDetailTvShow() {
-        onView(allOf(withId(R.id.rv_film), isDisplayed()))
         onView(withId(R.id.view_pager)).perform(ViewActions.swipeLeft())
         sleep(1000)
         onView(allOf(withId(R.id.rv_film), isDisplayed())).perform(
@@ -108,31 +79,14 @@ class HomeActivityTest {
                 0, click()
             )
         )
-        onView(withId(R.id.tv_title)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyTvShow.title)))
-        }
-        onView(withId(R.id.tv_genre)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyTvShow.genres)))
-        }
-        onView(withId(R.id.tv_release_date)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyTvShow.releaseDate)))
-        }
+       onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_genre)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_runtime)).check(matches(isDisplayed()))
         onView(withId(R.id.iv_poster)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_vote)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyTvShow.runtime?.let {
-                getRuntime(
-                    it.toInt()
-                )
-            })))
-        }
-        onView(withId(R.id.tv_plot)).apply {
-            check(matches(isDisplayed()))
-            check(matches(withText(dummyTvShow.overview)))
-        }
+        onView(withId(R.id.iv_back_drop)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_vote)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_plot)).check(matches(isDisplayed()))
         onView(withId(R.id.fab)).check(matches(isDisplayed()))
     }
 }
