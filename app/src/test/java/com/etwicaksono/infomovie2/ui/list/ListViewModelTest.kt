@@ -21,8 +21,8 @@ import org.mockito.junit.MockitoJUnitRunner
 class ListViewModelTest {
     private lateinit var viewModel: ListViewModel
 
-    private val dummyMovies = DataDummy.getAllMovies()
-    private val dummyTvShows = DataDummy.getAllTvShows()
+    private val dummyMovies = DataDummy.getAllMoviesDummy()
+    private val dummyTvShows = DataDummy.getAllTvShowsDummy()
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()

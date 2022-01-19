@@ -19,8 +19,8 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class DetailViewModelTest {
     private lateinit var viewModel: DetailViewModel
-    private var dummyMovie = DataDummy.getMovie()
-    private var dummyTvShow = DataDummy.getTvShow()
+    private var dummyMovie = DataDummy.getMovieDummy()
+    private var dummyTvShow = DataDummy.getTvShowDummy()
     private var movieId = dummyMovie.id
     private var tvShowId = dummyTvShow.id
 
