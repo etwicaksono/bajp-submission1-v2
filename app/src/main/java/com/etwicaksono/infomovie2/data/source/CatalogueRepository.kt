@@ -26,15 +26,15 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
             remoteDataSource.getPopularMovies(object : RemoteDataSource.LoadMoviesCallback {
                 override fun onPopularMoviesReceived(res: List<ResponseMovieItem>) {
                     val movieList = ArrayList<CatalogueModel>()
-                    for (res in res) {
+                    for (r in res) {
                         val movie = CatalogueModel(
-                            res.id,
+                            r.id,
                             TYPE_MOVIE,
-                            res.releaseDate,
-                            getReleaseYear(res.releaseDate, "-"),
-                            res.title,
-                            res.plot,
-                            res.posterPath,
+                            r.releaseDate,
+                            getReleaseYear(r.releaseDate, "-"),
+                            r.title,
+                            r.plot,
+                            r.posterPath,
                         )
                         movieList.add(movie)
                     }
