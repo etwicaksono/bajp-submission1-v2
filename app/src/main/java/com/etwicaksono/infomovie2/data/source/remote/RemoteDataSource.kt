@@ -52,7 +52,6 @@ class RemoteDataSource {
 
     companion object {
         private val api = ApiConfig.getApiService()
-        private val TAG = RemoteDataSource::class.java.simpleName
 
         @Volatile
         private var instance: RemoteDataSource? = null

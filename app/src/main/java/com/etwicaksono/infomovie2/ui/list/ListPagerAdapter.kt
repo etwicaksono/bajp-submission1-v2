@@ -1,27 +1,16 @@
 package com.etwicaksono.infomovie2.ui.list
 
-import android.content.Context
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import com.etwicaksono.infomovie2.R
-import com.etwicaksono.infomovie2.utils.Helper
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.etwicaksono.infomovie2.utils.Helper.TAB_TITLES
 
-class ListPagerAdapter(private val mContext: Context, fm: FragmentManager) :
-    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-    override fun getCount(): Int = 2
+class ListPagerAdapter(fm: FragmentActivity) :
+    FragmentStateAdapter(fm) {
 
-    override fun getItem(position: Int): Fragment {
-        return ListFragment.newInstance(TAB_TITLES[position])
-    }
+    override fun getItemCount(): Int = TAB_TITLES.size
 
-    override fun getPageTitle(position: Int): CharSequence {
-        return TAB_TITLES[position]
-    }
+    override fun createFragment(position: Int): Fragment =
+        ListFragment.newInstance(TAB_TITLES[position])
 
-
-    companion object {
-        private val TAB_TITLES = listOf(Helper.TYPE_MOVIE, Helper.TYPE_TVSHOW)
-    }
 }

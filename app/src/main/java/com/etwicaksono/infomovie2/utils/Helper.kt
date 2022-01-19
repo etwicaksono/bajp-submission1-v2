@@ -5,13 +5,13 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.etwicaksono.infomovie2.R
 import com.etwicaksono.infomovie2.data.source.remote.response.Genre
-import java.io.IOException
 import kotlin.math.floor
 
 object Helper {
 
-    const val TYPE_MOVIE = "TYPE_MOVIE"
-    const val TYPE_TVSHOW = "TYPE_TVSHOW"
+    const val TYPE_MOVIE = "MOVIE"
+    const val TYPE_TVSHOW = "TV SHOW"
+    val TAB_TITLES = listOf(TYPE_MOVIE, TYPE_TVSHOW)
     const val API_IMAGE_ENDPOINT = "https://image.tmdb.org/t/p/"
     const val ENDPOINT_POSTER_SIZE_W185 = "w185"
     const val ENDPOINT_POSTER_SIZE_W780 = "w780"
