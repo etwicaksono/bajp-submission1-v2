@@ -18,20 +18,10 @@ object Helper {
 
     fun setImageWithGlide(context: Context, imagePath: String, imageView: ImageView) {
         Glide.with(context).clear(imageView)
-        Glide.with(context).load(imagePath).into(imageView)
-    }
-
-    fun getJsonDataFromAsset(context: Context, fileName: String): String? {
-        val jsonString: String
-        try {
-            jsonString = context.assets.open(fileName).bufferedReader().use {
-                it.readText()
-            }
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-            return null
-        }
-        return jsonString
+        Glide.with(context)
+            .load(imagePath)
+            .error(R.drawable.ic_broken_image)
+            .into(imageView)
     }
 
     fun getRuntime(input: Int): String {
@@ -40,14 +30,6 @@ object Helper {
         return if (hour > 0) {
             "${hour}h ${minutes}m"
         } else "${minutes}m"
-    }
-
-    fun getAccessToken(context: Context): String? {
-        val sharedPref = context.getSharedPreferences(
-            context.getString(R.string.preference_file_key),
-            Context.MODE_PRIVATE
-        )
-        return sharedPref.getString(context.getString(R.string.saved_request_token), "")
     }
 
     fun getReleaseYear(releaseDate: String, separator: String = "/"): String {
