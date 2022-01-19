@@ -27,12 +27,6 @@
         <item name="maxLines">2</item>
     </style>
 
-    <style name="HeaderText" parent="Theme.InfoMovie">
-        <item name="android:textColor">@color/teal_700</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:ellipsize">end</item>
-    </style>
-
     <style name="PlotText" parent="Theme.InfoMovie">
         <item name="android:textColor">@color/black</item>
     </style>
@@ -43,16 +37,6 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Toolbar" parent="Theme.InfoMovie">
-        <item name="android:background">@color/blue_900</item>
-        <item name="android:textColor">@color/blue_900</item>
-    </style>
-
-    <style name="CollapsibleToolbar" parent="Theme.InfoMovie">
-        <item name="android:background">@color/white</item>
-        <item name="android:textColor">@color/blue_900</item>
-    </style>
-
     <style name="FloatingButton" parent="Theme.InfoMovie">
         <item name="android:backgroundTint">@color/blue_900</item>
     </style>
@@ -61,10 +45,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="Theme.InfoMovie.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.InfoMovie.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>
