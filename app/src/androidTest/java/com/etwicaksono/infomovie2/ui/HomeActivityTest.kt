@@ -64,7 +64,6 @@ class HomeActivityTest {
     @Test
     fun loadTVShow() {
         onView(withId(R.id.view_pager)).perform(ViewActions.swipeLeft())
-        sleep(1000)
         onView(allOf(withId(R.id.rv_film), isDisplayed())).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(15)
         )
@@ -73,7 +72,6 @@ class HomeActivityTest {
     @Test
     fun loadDetailTvShow() {
         onView(withId(R.id.view_pager)).perform(ViewActions.swipeLeft())
-        sleep(1000)
         onView(allOf(withId(R.id.rv_film), isDisplayed())).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0, click()

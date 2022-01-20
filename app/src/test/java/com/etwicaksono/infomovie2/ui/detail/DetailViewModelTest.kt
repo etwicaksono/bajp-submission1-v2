@@ -3,10 +3,10 @@ package com.etwicaksono.infomovie2.ui.detail
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.etwicaksono.infomovie2.data.CatalogueModel
 import com.etwicaksono.infomovie2.data.DetailItemModel
 import com.etwicaksono.infomovie2.data.source.CatalogueRepository
 import com.etwicaksono.infomovie2.utils.DataDummy
+import com.nhaarman.mockitokotlin2.verify
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -31,7 +31,7 @@ class DetailViewModelTest {
     private lateinit var catalogueRepository: CatalogueRepository
 
     @Mock
-    private lateinit var observer:Observer<CatalogueModel>
+    private lateinit var observer:Observer<DetailItemModel>
 
     @Before
     fun setup() {
@@ -57,6 +57,9 @@ class DetailViewModelTest {
         Assert.assertEquals(dummyMovie.runtime, movieData.runtime)
         Assert.assertEquals(dummyMovie.title, movieData.title)
         Assert.assertEquals(dummyMovie.voteAverage, movieData.voteAverage)
+
+        movieId?.let { viewModel.getMovieDetail(it).observeForever(observer) }
+        verify(observer).onChanged(dummyMovie)
     }
 
 
@@ -66,18 +69,21 @@ class DetailViewModelTest {
         tvShowDummy.value=dummyTvShow
 
         `when`(tvShowId?.let { catalogueRepository.getTvShowDetail(it) }).thenReturn(tvShowDummy)
-        val movieData = tvShowId?.let { viewModel.getTvDetail(it).value } as DetailItemModel
+        val tvShowData = tvShowId?.let { viewModel.getTvDetail(it).value } as DetailItemModel
 
-        Assert.assertNotNull(movieData)
-        Assert.assertEquals(dummyTvShow.backdropPath, movieData.backdropPath)
-        Assert.assertEquals(dummyTvShow.genres, movieData.genres)
-        Assert.assertEquals(dummyTvShow.id, movieData.id)
-        Assert.assertEquals(dummyTvShow.overview, movieData.overview)
-        Assert.assertEquals(dummyTvShow.posterPath, movieData.posterPath)
-        Assert.assertEquals(dummyTvShow.releaseDate, movieData.releaseDate)
-        Assert.assertEquals(dummyTvShow.year, movieData.year)
-        Assert.assertEquals(dummyTvShow.runtime, movieData.runtime)
-        Assert.assertEquals(dummyTvShow.title, movieData.title)
-        Assert.assertEquals(dummyTvShow.voteAverage, movieData.voteAverage)
+        Assert.assertNotNull(tvShowData)
+        Assert.assertEquals(dummyTvShow.backdropPath, tvShowData.backdropPath)
+        Assert.assertEquals(dummyTvShow.genres, tvShowData.genres)
+        Assert.assertEquals(dummyTvShow.id, tvShowData.id)
+        Assert.assertEquals(dummyTvShow.overview, tvShowData.overview)
+        Assert.assertEquals(dummyTvShow.posterPath, tvShowData.posterPath)
+        Assert.assertEquals(dummyTvShow.releaseDate, tvShowData.releaseDate)
+        Assert.assertEquals(dummyTvShow.year, tvShowData.year)
+        Assert.assertEquals(dummyTvShow.runtime, tvShowData.runtime)
+        Assert.assertEquals(dummyTvShow.title, tvShowData.title)
+        Assert.assertEquals(dummyTvShow.voteAverage, tvShowData.voteAverage)
+
+        tvShowId?.let { viewModel.getTvDetail(it).observeForever(observer) }
+        verify(observer).onChanged(dummyTvShow)
     }
 }
