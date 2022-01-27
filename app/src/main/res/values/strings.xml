@@ -10,4 +10,5 @@
     <string name="saved_request_token">saved_request_token</string>
     <string name="backdrop">Backdrop</string>
     <string name="no_data_received">No data received</string>
+    <string name="floating_button">Floating Button</string>
 </resources>
