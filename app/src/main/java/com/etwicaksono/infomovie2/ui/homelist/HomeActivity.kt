@@ -1,10 +1,9 @@
-package com.etwicaksono.infomovie2.ui
+package com.etwicaksono.infomovie2.ui.homelist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.etwicaksono.infomovie2.databinding.ActivityHomeBinding
-import com.etwicaksono.infomovie2.ui.list.ListPagerAdapter
-import com.etwicaksono.infomovie2.utils.Helper
+import com.etwicaksono.infomovie2.ui.homelist.ListPagerAdapter
 import com.etwicaksono.infomovie2.utils.Helper.TAB_TITLES
 import com.google.android.material.tabs.TabLayoutMediator
 

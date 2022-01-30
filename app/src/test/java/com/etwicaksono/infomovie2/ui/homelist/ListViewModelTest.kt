@@ -1,4 +1,4 @@
-package com.etwicaksono.infomovie2.ui.list
+package com.etwicaksono.infomovie2.ui.homelist
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData

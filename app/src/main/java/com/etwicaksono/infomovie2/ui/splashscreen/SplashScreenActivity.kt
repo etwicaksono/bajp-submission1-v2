@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.etwicaksono.infomovie2.R
-import com.etwicaksono.infomovie2.ui.HomeActivity
+import com.etwicaksono.infomovie2.ui.homelist.HomeActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 

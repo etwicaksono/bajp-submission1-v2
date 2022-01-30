@@ -10,8 +10,8 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import com.etwicaksono.infomovie2.R
+import com.etwicaksono.infomovie2.ui.homelist.HomeActivity
 import com.etwicaksono.infomovie2.utils.EspressoIdlingResource
-import com.etwicaksono.infomovie2.utils.Helper.getRuntime
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.After
 import org.junit.Before

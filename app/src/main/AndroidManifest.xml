@@ -12,18 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InfoMovie">
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.homelist.HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.InfoMovie.NoActionBar" />
         <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="false"
-            android:parentActivityName=".ui.HomeActivity">
+            android:parentActivityName=".ui.homelist.HomeActivity">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.HomeActivity"/>
+                android:value=".ui.homelist.HomeActivity"/>
         </activity>
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"

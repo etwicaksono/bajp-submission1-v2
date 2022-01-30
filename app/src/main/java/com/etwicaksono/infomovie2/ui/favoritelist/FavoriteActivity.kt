@@ -1,4 +1,4 @@
-package com.etwicaksono.infomovie2.ui
+package com.etwicaksono.infomovie2.ui.favoritelist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
