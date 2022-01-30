@@ -53,10 +53,6 @@ class ListFragment : Fragment() {
                 showSelectedData(it)
             }
 
-            binding?.apply {
-                tvNoData.visibility = View.VISIBLE
-                progressBarWrapper.progressBar.visibility = View.VISIBLE
-            }
             when (type) {
                 Helper.TYPE_MOVIE -> {
                     viewModel.getAllMovies().observe(viewLifecycleOwner) { listMovies ->
@@ -68,8 +64,8 @@ class ListFragment : Fragment() {
                                     binding?.rvFilm?.adapter.let {
                                         listAdapter.submitList(listMovies.data)
                                         binding?.apply {
-                                            tvNoData.visibility = View.GONE
                                             progressBarWrapper.progressBar.visibility = View.GONE
+                                            if(listMovies.data==null || listMovies.data.isEmpty()) tvNoData.visibility=View.VISIBLE
                                         }
                                     }
                                 }
