@@ -183,6 +183,15 @@ class CatalogueRepository private constructor(
         return LivePagedListBuilder(localDataSource.getFavoriteMovies(), config).build()
     }
 
+    override fun getFavoriteTvShows(): LiveData<PagedList<ListEntity>> {
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setInitialLoadSizeHint(4)
+            .setPageSize(4)
+            .build()
+        return LivePagedListBuilder(localDataSource.getFavoriteTvShows(), config).build()
+    }
+
     override fun setFavorite(catalogue: ListEntity, state: Boolean) {
         appExecutors.diskIO().execute { localDataSource.setFavorite(catalogue, state) }
     }

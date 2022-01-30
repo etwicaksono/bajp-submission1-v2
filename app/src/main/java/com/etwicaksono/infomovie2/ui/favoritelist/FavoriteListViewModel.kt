@@ -15,5 +15,5 @@ class FavoriteListViewModel(private val repo: CatalogueRepository) : ViewModel()
 
     fun getFavoriteMovies(): LiveData<PagedList<ListEntity>> = repo.getFavoriteMovies()
 
-    fun getFavoriteTvShows(): LiveData<PagedList<ListEntity>> = repo.getFavoriteMovies()
+    fun getFavoriteTvShows(): LiveData<PagedList<ListEntity>> = repo.getFavoriteTvShows()
 }
