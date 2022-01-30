@@ -7,11 +7,13 @@ import com.etwicaksono.infomovie2.data.CatalogueRepository
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.valueobject.Resource
 
-class ListViewModel(private val repo: CatalogueRepository) : ViewModel() {
+class FavoriteListViewModel(private val repo: CatalogueRepository) : ViewModel() {
 
     fun getAllMovies(): LiveData<Resource<PagedList<ListEntity>>> = repo.getPopularMovies()
 
     fun getAllTvShows(): LiveData<Resource<PagedList<ListEntity>>> = repo.getPopularTvShow()
 
-    fun getFavorite(): LiveData<PagedList<ListEntity>> = repo.getFavoriteMovies()
+    fun getFavoriteMovies(): LiveData<PagedList<ListEntity>> = repo.getFavoriteMovies()
+
+    fun getFavoriteTvShows(): LiveData<PagedList<ListEntity>> = repo.getFavoriteMovies()
 }

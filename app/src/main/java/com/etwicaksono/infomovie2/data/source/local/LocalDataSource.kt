@@ -12,7 +12,9 @@ class LocalDataSource private constructor(private val mDao: CatalogueDao) {
 
     fun getTvShow(): DataSource.Factory<Int, ListEntity> = mDao.getTvShow()
 
-    fun getFavorite(): DataSource.Factory<Int, ListEntity> = mDao.getFavorite()
+    fun getFavoriteMovies(): DataSource.Factory<Int, ListEntity> = mDao.getFavoriteMovies()
+
+    fun getFavoriteTvShows(): DataSource.Factory<Int, ListEntity> = mDao.getFavoriteTvShows()
 
     fun insertCatalogues(catalogues: List<ListEntity>) = mDao.insertCatalogues(catalogues)
 
