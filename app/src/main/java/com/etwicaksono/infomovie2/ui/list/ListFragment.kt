@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.databinding.FragmentListBinding
 import com.etwicaksono.infomovie2.ui.detail.DetailActivity
 import com.etwicaksono.infomovie2.utils.Helper
+import com.etwicaksono.infomovie2.valueobject.Status
 import com.etwicaksono.infomovie2.viewmodel.ViewModelFactory
 
 class ListFragment : Fragment() {
@@ -41,7 +43,7 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val factory = ViewModelFactory.getInstance()
+            val factory = ViewModelFactory.getInstance(requireContext())
             viewModel = ViewModelProvider(
                 this,
                 factory
@@ -57,38 +59,67 @@ class ListFragment : Fragment() {
             }
             when (type) {
                 Helper.TYPE_MOVIE -> {
-                    viewModel.getAllMovies().observe(viewLifecycleOwner, { listMovies ->
-                        binding?.rvFilm?.adapter.let {
-                            listAdapter.setList(listMovies)
-                            binding?.apply {
-                                tvNoData.visibility = View.GONE
-                                progressBarWrapper.progressBar.visibility = View.GONE
+                    viewModel.getAllMovies().observe(viewLifecycleOwner) { listMovies ->
+                        if (listMovies != null) {
+                            when (listMovies.status) {
+                                Status.LOADING -> binding?.progressBarWrapper?.progressBar?.visibility =
+                                    View.VISIBLE
+                                Status.SUCCESS -> {
+                                    binding?.rvFilm?.adapter.let {
+                                        listAdapter.submitList(listMovies.data)
+                                        binding?.apply {
+                                            tvNoData.visibility = View.GONE
+                                            progressBarWrapper.progressBar.visibility = View.GONE
+                                        }
+                                    }
+                                }
+                                Status.ERROR -> {
+                                    binding?.progressBarWrapper?.progressBar?.visibility = View.GONE
+                                    Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT)
+                                        .show()
+
+                                }
                             }
                         }
-                    })
+                    }
                 }
                 Helper.TYPE_TV -> {
-                    viewModel.getAllTvShows().observe(viewLifecycleOwner, { listTvShow ->
-                        binding?.rvFilm?.adapter.let {
-                            listAdapter.setList(listTvShow)
-                            binding?.apply {
-                                tvNoData.visibility = View.GONE
-                                progressBarWrapper.progressBar.visibility = View.GONE
+                    viewModel.getAllTvShows().observe(viewLifecycleOwner) { listTvShow ->
+                        if (listTvShow != null) {
+                            when (listTvShow.status) {
+                                Status.LOADING -> binding?.progressBarWrapper?.progressBar?.visibility =
+                                    View.VISIBLE
+                                Status.SUCCESS -> {
+                                    binding?.rvFilm?.adapter.let {
+                                        listAdapter.submitList(listTvShow.data)
+                                        binding?.apply {
+                                            tvNoData.visibility = View.GONE
+                                            progressBarWrapper.progressBar.visibility = View.GONE
+                                        }
+                                    }
+                                }
+                                Status.ERROR -> {
+                                    binding?.progressBarWrapper?.progressBar?.visibility = View.GONE
+                                    Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT)
+                                        .show()
+
+                                }
                             }
                         }
-                    })
+                    }
                 }
             }
-
-
-            binding?.rvFilm?.apply {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = listAdapter
-            }
-
         }
+
+
+        binding?.rvFilm?.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = listAdapter
+        }
+
     }
+
 
     private fun showSelectedData(catalogue: ListEntity) {
         startActivity(Intent(requireContext(), DetailActivity::class.java).apply {

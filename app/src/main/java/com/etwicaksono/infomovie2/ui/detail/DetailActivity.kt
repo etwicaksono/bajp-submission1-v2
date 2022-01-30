@@ -37,7 +37,7 @@ class DetailActivity : AppCompatActivity() {
         val id = intent.getIntExtra(EXTRA_ID, 1)
         val type = intent.getStringExtra(EXTRA_TYPE)
 
-        val factory = ViewModelFactory.getInstance()
+        val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(
             this,
             factory
