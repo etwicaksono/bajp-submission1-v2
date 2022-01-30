@@ -9,7 +9,7 @@ data class ResponseDetailMovie(
     @SerializedName("genres")
     val genres: List<Genre>?,
     @SerializedName("id")
-    val id: Int?,
+    val id: Int=0,
     @SerializedName("overview")
     val overview: String?,
     @SerializedName("poster_path")

@@ -81,7 +81,7 @@ class DetailActivity : AppCompatActivity() {
                 })
 
             }
-            Helper.TYPE_TVSHOW -> {
+            Helper.TYPE_TV -> {
                 viewModel.getTvDetail(id).observe(this, { movie ->
                     binding.apply {
                         tvTitle.text = movie.title

@@ -13,7 +13,7 @@ data class ResponseDetailTv(
     @SerializedName("genres")
     val genres: List<Genre>?,
     @SerializedName("id")
-    val id: Int?,
+    val id: Int = 0,
     @SerializedName("name")
     val title: String?,
     @SerializedName("overview")

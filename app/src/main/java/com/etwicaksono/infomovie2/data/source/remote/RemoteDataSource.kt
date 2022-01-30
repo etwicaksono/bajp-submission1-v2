@@ -35,7 +35,7 @@ class RemoteDataSource {
         return resultMovies
     }
 
-    suspend fun getPopularTvShow(): LiveData<ApiResponse<List<ResponseTvShowItem>>> {
+     fun getPopularTvShow(): LiveData<ApiResponse<List<ResponseTvShowItem>>> {
         val resultTvShow = MutableLiveData<ApiResponse<List<ResponseTvShowItem>>>()
         api.getPopularTvShow().enqueue(object : Callback<ResponseCatalogue<ResponseTvShowItem>> {
             override fun onResponse(

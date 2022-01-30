@@ -67,7 +67,7 @@ class ListFragment : Fragment() {
                         }
                     })
                 }
-                Helper.TYPE_TVSHOW -> {
+                Helper.TYPE_TV -> {
                     viewModel.getAllTvShows().observe(viewLifecycleOwner, { listTvShow ->
                         binding?.rvFilm?.adapter.let {
                             listAdapter.setList(listTvShow)

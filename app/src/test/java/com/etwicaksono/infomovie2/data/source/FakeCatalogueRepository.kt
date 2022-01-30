@@ -11,7 +11,7 @@ import com.etwicaksono.infomovie2.data.source.remote.response.ResponseDetailTv
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseMovieItem
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseTvShowItem
 import com.etwicaksono.infomovie2.utils.Helper.TYPE_MOVIE
-import com.etwicaksono.infomovie2.utils.Helper.TYPE_TVSHOW
+import com.etwicaksono.infomovie2.utils.Helper.TYPE_TV
 import com.etwicaksono.infomovie2.utils.Helper.getGenres
 import com.etwicaksono.infomovie2.utils.Helper.getReleaseYear
 import com.etwicaksono.infomovie2.utils.Helper.getRuntime
@@ -80,7 +80,7 @@ class FakeCatalogueRepository(private val remoteDataSource: RemoteDataSource) :
                     for (res in res) {
                         val show = ListEntity(
                             res.id,
-                            TYPE_TVSHOW,
+                            TYPE_TV,
                             res.releaseDate,
                             getReleaseYear(res.releaseDate, "-"),
                             res.title,
