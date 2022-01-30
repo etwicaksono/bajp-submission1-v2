@@ -26,4 +26,6 @@ data class ListEntity(
     val plot: String? = null,
     @ColumnInfo(name = "poster_path")
     val posterPath: String? = null,
+    @ColumnInfo(name = "favorite")
+    val favorite: Boolean = false,
 ) : Parcelable
