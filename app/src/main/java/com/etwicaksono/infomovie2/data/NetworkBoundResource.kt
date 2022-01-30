@@ -12,6 +12,19 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecut
 
     init {
         result.value = Resource.loading(null)
+        @Suppress("LeakingThis")
+        val dbSource = loadFromDB()
+
+        result.addSource(dbSource) { data ->
+            result.removeSource(dbSource)
+            if (shouldFetch(data)) {
+                fetchFromNetwork(dbSource)
+            } else {
+                result.addSource(dbSource) { newData ->
+                    result.value = Resource.success(newData)
+                }
+            }
+        }
     }
 
     protected open fun onFetchFailed() {}
