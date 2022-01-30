@@ -8,7 +8,7 @@ import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 
 @Dao
 interface CatalogueDao {
-    @Query("SELECT * FROM list_entities WHERE type = 'movies'")
+    @Query("SELECT * FROM list_entities WHERE type = 'movie'")
     fun getMovies(): DataSource.Factory<Int, ListEntity>
 
     @Query("SELECT * FROM list_entities WHERE type = 'tv'")

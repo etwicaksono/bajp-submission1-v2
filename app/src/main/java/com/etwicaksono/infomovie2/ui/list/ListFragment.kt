@@ -1,10 +1,8 @@
 package com.etwicaksono.infomovie2.ui.list
 
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,7 +57,6 @@ class ListFragment : Fragment() {
                 Helper.TYPE_MOVIE -> {
                     viewModel.getAllMovies().observe(viewLifecycleOwner) { listMovies ->
                         if (listMovies != null) {
-                            Log.d("ASU",listMovies.toString())
                             when (listMovies.status) {
                                 Status.LOADING -> binding?.progressBarWrapper?.progressBar?.visibility =
                                     View.VISIBLE
@@ -68,7 +65,13 @@ class ListFragment : Fragment() {
                                         listAdapter.submitList(listMovies.data)
                                         binding?.apply {
                                             progressBarWrapper.progressBar.visibility = View.GONE
-                                            if(listMovies.data==null || listMovies.data.isEmpty()) tvNoData.visibility=View.VISIBLE
+                                            if (listMovies.data == null || listMovies.data.isEmpty()){
+                                                 tvNoData.visibility =
+                                                View.VISIBLE
+                                            }else{
+                                                 tvNoData.visibility =
+                                                View.GONE
+                                            }
                                         }
                                     }
                                 }

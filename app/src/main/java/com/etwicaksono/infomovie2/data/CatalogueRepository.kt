@@ -14,6 +14,7 @@ import com.etwicaksono.infomovie2.data.source.remote.response.ResponseMovieItem
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseTvShowItem
 import com.etwicaksono.infomovie2.utils.AppExecutors
 import com.etwicaksono.infomovie2.utils.Helper.TYPE_MOVIE
+import com.etwicaksono.infomovie2.utils.Helper.TYPE_TV
 import com.etwicaksono.infomovie2.utils.Helper.getGenres
 import com.etwicaksono.infomovie2.utils.Helper.getReleaseYear
 import com.etwicaksono.infomovie2.utils.Helper.getRuntime
@@ -125,7 +126,7 @@ class CatalogueRepository private constructor(
                 for (response in data) {
                     val tv = ListEntity(
                         id = response.id,
-                        type = TYPE_MOVIE,
+                        type = TYPE_TV,
                         releaseDate = response.releaseDate,
                         year = getReleaseYear(response.releaseDate, "-"),
                         title = response.title,
