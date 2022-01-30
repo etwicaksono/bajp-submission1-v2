@@ -21,7 +21,7 @@ interface CatalogueDao {
     fun insertCatalogues(catalogues: List<ListEntity>)
 
     @Update
-    fun updateCatalogues(catalogues: List<ListEntity>)
+    fun updateCatalogues(catalogue: ListEntity)
 
     @Query("SELECT * FROM detail_entities WHERE id=:id")
     fun getDetailCatalogue(id: Int): LiveData<DetailEntity>

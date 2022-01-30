@@ -15,17 +15,17 @@ data class ListEntity(
     @ColumnInfo(name = "id")
     val id: Int = 0,
     @ColumnInfo(name = "type")
-    val type: String? = null,
+    var type: String? = null,
     @ColumnInfo(name = "release_date")
-    val releaseDate: String? = null,
+    var releaseDate: String? = null,
     @ColumnInfo(name = "year")
-    val year: String? = null,
+    var year: String? = null,
     @ColumnInfo(name = "title")
-    val title: String? = null,
+    var title: String? = null,
     @ColumnInfo(name = "plot")
-    val plot: String? = null,
+    var plot: String? = null,
     @ColumnInfo(name = "poster_path")
-    val posterPath: String? = null,
+    var posterPath: String? = null,
     @ColumnInfo(name = "favorite")
-    val favorite: Boolean = false,
+    var favorite: Boolean = false,
 ) : Parcelable
