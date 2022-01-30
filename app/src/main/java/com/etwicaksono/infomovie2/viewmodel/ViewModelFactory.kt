@@ -2,7 +2,7 @@ package com.etwicaksono.infomovie2.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.etwicaksono.infomovie2.data.source.CatalogueRepository
+import com.etwicaksono.infomovie2.data.CatalogueRepository
 import com.etwicaksono.infomovie2.di.Injection
 import com.etwicaksono.infomovie2.ui.detail.DetailViewModel
 import com.etwicaksono.infomovie2.ui.list.ListViewModel

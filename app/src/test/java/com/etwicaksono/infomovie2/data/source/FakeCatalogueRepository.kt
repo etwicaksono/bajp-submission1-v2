@@ -2,6 +2,7 @@ package com.etwicaksono.infomovie2.data.source
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.etwicaksono.infomovie2.data.CatalogueDataSource
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.remote.RemoteDataSource

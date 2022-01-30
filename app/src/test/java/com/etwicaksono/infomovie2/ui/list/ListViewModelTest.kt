@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
-import com.etwicaksono.infomovie2.data.source.CatalogueRepository
+import com.etwicaksono.infomovie2.data.CatalogueRepository
 import com.etwicaksono.infomovie2.utils.DataDummy
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Assert.assertEquals

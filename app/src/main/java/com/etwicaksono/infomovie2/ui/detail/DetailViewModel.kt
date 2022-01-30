@@ -3,7 +3,7 @@ package com.etwicaksono.infomovie2.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
-import com.etwicaksono.infomovie2.data.source.CatalogueRepository
+import com.etwicaksono.infomovie2.data.CatalogueRepository
 
 class DetailViewModel(private val catalogueRepository: CatalogueRepository) : ViewModel() {
 

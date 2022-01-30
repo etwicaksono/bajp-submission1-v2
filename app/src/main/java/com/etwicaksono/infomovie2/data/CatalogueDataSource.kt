@@ -1,4 +1,4 @@
-package com.etwicaksono.infomovie2.data.source
+package com.etwicaksono.infomovie2.data
 
 import androidx.lifecycle.LiveData
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity

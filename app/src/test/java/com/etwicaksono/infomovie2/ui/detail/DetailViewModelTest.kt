@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
-import com.etwicaksono.infomovie2.data.source.CatalogueRepository
+import com.etwicaksono.infomovie2.data.CatalogueRepository
 import com.etwicaksono.infomovie2.utils.DataDummy
 import org.junit.Assert
 import org.junit.Before
