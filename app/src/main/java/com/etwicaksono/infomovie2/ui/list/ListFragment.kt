@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.etwicaksono.infomovie2.data.CatalogueModel
+import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.databinding.FragmentListBinding
 import com.etwicaksono.infomovie2.ui.detail.DetailActivity
 import com.etwicaksono.infomovie2.utils.Helper
@@ -90,7 +90,7 @@ class ListFragment : Fragment() {
         }
     }
 
-    private fun showSelectedData(catalogue: CatalogueModel) {
+    private fun showSelectedData(catalogue: ListEntity) {
         startActivity(Intent(requireContext(), DetailActivity::class.java).apply {
             putExtra(DetailActivity.EXTRA_ID, catalogue.id)
             putExtra(DetailActivity.EXTRA_TYPE, catalogue.type)

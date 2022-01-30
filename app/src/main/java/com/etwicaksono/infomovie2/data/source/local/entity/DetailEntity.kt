@@ -1,7 +1,7 @@
-package com.etwicaksono.infomovie2.data
+package com.etwicaksono.infomovie2.data.source.local.entity
 
 
-data class DetailItemModel(
+data class DetailEntity(
     val backdropPath: String?,
     val genres: String?,
     val id: Int?,

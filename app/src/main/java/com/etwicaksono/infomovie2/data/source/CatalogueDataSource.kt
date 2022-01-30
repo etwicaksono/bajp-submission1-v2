@@ -1,12 +1,12 @@
 package com.etwicaksono.infomovie2.data.source
 
 import androidx.lifecycle.LiveData
-import com.etwicaksono.infomovie2.data.CatalogueModel
-import com.etwicaksono.infomovie2.data.DetailItemModel
+import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
+import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 
 interface CatalogueDataSource {
-    fun getPopularMovies(): LiveData<List<CatalogueModel>>
-    fun getMovieDetail(movieId:Int): LiveData<DetailItemModel>
-    fun getPopularTvShow(): LiveData<List<CatalogueModel>>
-    fun getTvShowDetail(tvId:Int): LiveData<DetailItemModel>
+    fun getPopularMovies(): LiveData<List<ListEntity>>
+    fun getMovieDetail(movieId:Int): LiveData<DetailEntity>
+    fun getPopularTvShow(): LiveData<List<ListEntity>>
+    fun getTvShowDetail(tvId:Int): LiveData<DetailEntity>
 }

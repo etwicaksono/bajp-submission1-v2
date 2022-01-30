@@ -1,15 +1,15 @@
 package com.etwicaksono.infomovie2.utils
 
-import com.etwicaksono.infomovie2.data.CatalogueModel
-import com.etwicaksono.infomovie2.data.DetailItemModel
+import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
+import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.remote.response.*
 
 object DataDummy {
-    fun getAllMoviesDummy(): List<CatalogueModel> {
-        val movies = ArrayList<CatalogueModel>()
+    fun getAllMoviesDummy(): List<ListEntity> {
+        val movies = ArrayList<ListEntity>()
 
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 524434,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-11-03",
@@ -20,7 +20,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 585083,
                 type = "TYPE_MOVIE",
                 releaseDate = "2022-01-14",
@@ -31,7 +31,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 634649,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-12-15",
@@ -42,7 +42,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 438695,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-12-01",
@@ -53,7 +53,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 568124,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-11-24",
@@ -64,7 +64,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 425909,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-11-11",
@@ -75,7 +75,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 460458,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-11-24",
@@ -86,7 +86,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 624860,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-12-16",
@@ -97,7 +97,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 860623,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-10-19",
@@ -108,7 +108,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 580489,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-09-30",
@@ -119,7 +119,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 566525,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-09-01",
@@ -130,7 +130,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 739413,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-12-17",
@@ -141,7 +141,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 512195,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-11-04",
@@ -152,7 +152,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 763788,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-11-05",
@@ -163,7 +163,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 635302,
                 type = "TYPE_MOVIE",
                 releaseDate = "2020-10-16",
@@ -174,7 +174,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 516329,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-10-28",
@@ -185,7 +185,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 787310,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-10-08",
@@ -196,7 +196,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 585245,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-11-10",
@@ -207,7 +207,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 826749,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-12-17",
@@ -218,7 +218,7 @@ object DataDummy {
             )
         )
         movies.add(
-            CatalogueModel(
+            ListEntity(
                 id = 843241,
                 type = "TYPE_MOVIE",
                 releaseDate = "2021-07-02",
@@ -233,11 +233,11 @@ object DataDummy {
 
     }
 
-    fun getAllTvShowsDummy(): List<CatalogueModel> {
-        val series = ArrayList<CatalogueModel>()
+    fun getAllTvShowsDummy(): List<ListEntity> {
+        val series = ArrayList<ListEntity>()
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 85552,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2019-06-16",
@@ -249,7 +249,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 115036,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-12-29",
@@ -261,7 +261,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 77169,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2018-05-02",
@@ -273,7 +273,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 2778,
                 type = "TYPE_TVSHOW",
                 releaseDate = "1983-09-19",
@@ -285,7 +285,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 117031,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-01-18",
@@ -297,7 +297,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 135753,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-12-13",
@@ -309,7 +309,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 153748,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2002-09-08",
@@ -321,7 +321,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 1416,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2005-03-27",
@@ -333,7 +333,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 63174,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2016-01-25",
@@ -345,7 +345,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 71914,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-11-18",
@@ -357,7 +357,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 60574,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2013-09-12",
@@ -369,7 +369,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 60735,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2014-10-07",
@@ -381,7 +381,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 96777,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-12-24",
@@ -393,7 +393,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 132375,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-11-08",
@@ -405,7 +405,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 124549,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-09-13",
@@ -417,7 +417,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 117488,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-11-14",
@@ -429,7 +429,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 88329,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-11-24",
@@ -441,7 +441,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 122551,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-11-15",
@@ -453,7 +453,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 90462,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2021-10-12",
@@ -465,7 +465,7 @@ object DataDummy {
         )
 
         series.add(
-            CatalogueModel(
+            ListEntity(
                 id = 134949,
                 type = "TYPE_TVSHOW",
                 releaseDate = "2022-01-05",
@@ -480,8 +480,8 @@ object DataDummy {
         return series
     }
 
-    fun getMovieDummy(): DetailItemModel {
-        return DetailItemModel(
+    fun getMovieDummy(): DetailEntity {
+        return DetailEntity(
             backdropPath = "/c6H7Z4u73ir3cIoCteuhJh7UCAR.jpg",
             genres = "Action, Adventure, Fantasy, Science Fiction",
             id = 524434,
@@ -495,8 +495,8 @@ object DataDummy {
         )
     }
 
-    fun getTvShowDummy(): DetailItemModel {
-        return DetailItemModel(
+    fun getTvShowDummy(): DetailEntity {
+        return DetailEntity(
             backdropPath = "/yfXSvNfF43S0cxpxCEKaU17yZ64.jpg",
             genres = "Family",
             id = 2778,

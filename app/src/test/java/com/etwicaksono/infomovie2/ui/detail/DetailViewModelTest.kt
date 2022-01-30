@@ -3,8 +3,8 @@ package com.etwicaksono.infomovie2.ui.detail
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.etwicaksono.infomovie2.data.CatalogueModel
-import com.etwicaksono.infomovie2.data.DetailItemModel
+import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
+import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.CatalogueRepository
 import com.etwicaksono.infomovie2.utils.DataDummy
 import org.junit.Assert
@@ -31,7 +31,7 @@ class DetailViewModelTest {
     private lateinit var catalogueRepository: CatalogueRepository
 
     @Mock
-    private lateinit var observer:Observer<CatalogueModel>
+    private lateinit var observer:Observer<ListEntity>
 
     @Before
     fun setup() {
@@ -40,11 +40,11 @@ class DetailViewModelTest {
 
     @Test
     fun getMovieTest() {
-        val movieDummy = MutableLiveData<DetailItemModel>()
+        val movieDummy = MutableLiveData<DetailEntity>()
         movieDummy.value=dummyMovie
 
         `when`(movieId?.let { catalogueRepository.getMovieDetail(it) }).thenReturn(movieDummy)
-        val movieData = movieId?.let { viewModel.getMovieDetail(it).value } as DetailItemModel
+        val movieData = movieId?.let { viewModel.getMovieDetail(it).value } as DetailEntity
 
         Assert.assertNotNull(movieData)
         Assert.assertEquals(dummyMovie.backdropPath, movieData.backdropPath)
@@ -62,11 +62,11 @@ class DetailViewModelTest {
 
     @Test
     fun getTvShowTest() {
-        val tvShowDummy = MutableLiveData<DetailItemModel>()
+        val tvShowDummy = MutableLiveData<DetailEntity>()
         tvShowDummy.value=dummyTvShow
 
         `when`(tvShowId?.let { catalogueRepository.getTvShowDetail(it) }).thenReturn(tvShowDummy)
-        val movieData = tvShowId?.let { viewModel.getTvDetail(it).value } as DetailItemModel
+        val movieData = tvShowId?.let { viewModel.getTvDetail(it).value } as DetailEntity
 
         Assert.assertNotNull(movieData)
         Assert.assertEquals(dummyTvShow.backdropPath, movieData.backdropPath)

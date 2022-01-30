@@ -2,8 +2,8 @@ package com.etwicaksono.infomovie2.data.source
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.etwicaksono.infomovie2.data.CatalogueModel
-import com.etwicaksono.infomovie2.data.DetailItemModel
+import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
+import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.remote.RemoteDataSource
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseDetailMovie
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseDetailTv
@@ -20,14 +20,14 @@ import kotlinx.coroutines.launch
 
 class CatalogueRepository private constructor(private val remoteDataSource: RemoteDataSource) :
     CatalogueDataSource {
-    override fun getPopularMovies(): LiveData<List<CatalogueModel>> {
-        val listMoviesResult = MutableLiveData<List<CatalogueModel>>()
+    override fun getPopularMovies(): LiveData<List<ListEntity>> {
+        val listMoviesResult = MutableLiveData<List<ListEntity>>()
         CoroutineScope(IO).launch {
             remoteDataSource.getPopularMovies(object : RemoteDataSource.LoadMoviesCallback {
                 override fun onPopularMoviesReceived(res: List<ResponseMovieItem>) {
-                    val movieList = ArrayList<CatalogueModel>()
+                    val movieList = ArrayList<ListEntity>()
                     for (r in res) {
-                        val movie = CatalogueModel(
+                        val movie = ListEntity(
                             r.id,
                             TYPE_MOVIE,
                             r.releaseDate,
@@ -45,12 +45,12 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
         return listMoviesResult
     }
 
-    override fun getMovieDetail(movieId: Int): LiveData<DetailItemModel> {
-        val movieResult = MutableLiveData<DetailItemModel>()
+    override fun getMovieDetail(movieId: Int): LiveData<DetailEntity> {
+        val movieResult = MutableLiveData<DetailEntity>()
         CoroutineScope(IO).launch {
             remoteDataSource.getMovieDetail(movieId,object:RemoteDataSource.LoadMovieDetailCallback{
                 override fun onMoviedetailReceived(res: ResponseDetailMovie) {
-                    val movie = DetailItemModel(
+                    val movie = DetailEntity(
                         res.backdropPath,
                         getGenres(res.genres),
                         res.id,
@@ -70,14 +70,14 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
         return movieResult
     }
 
-    override fun getPopularTvShow(): LiveData<List<CatalogueModel>> {
-        val listTvShowResult = MutableLiveData<List<CatalogueModel>>()
+    override fun getPopularTvShow(): LiveData<List<ListEntity>> {
+        val listTvShowResult = MutableLiveData<List<ListEntity>>()
         CoroutineScope(IO).launch {
             remoteDataSource.getPopularTvShow(object : RemoteDataSource.LoadTvShowsCallback {
                 override fun onPopularTvShowsReceived(res: List<ResponseTvShowItem>) {
-                    val tvShowList = ArrayList<CatalogueModel>()
+                    val tvShowList = ArrayList<ListEntity>()
                     for (res in res) {
-                        val show = CatalogueModel(
+                        val show = ListEntity(
                             res.id,
                             TYPE_TVSHOW,
                             res.releaseDate,
@@ -96,12 +96,12 @@ class CatalogueRepository private constructor(private val remoteDataSource: Remo
         return listTvShowResult
     }
 
-    override fun getTvShowDetail(tvId: Int): LiveData<DetailItemModel> {
-        val tvResult = MutableLiveData<DetailItemModel>()
+    override fun getTvShowDetail(tvId: Int): LiveData<DetailEntity> {
+        val tvResult = MutableLiveData<DetailEntity>()
         CoroutineScope(IO).launch {
             remoteDataSource.getTvDetail(tvId,object :RemoteDataSource.LoadTvDetailCallback{
                 override fun onTvDetailReceived(res: ResponseDetailTv) {
-                    val tv = DetailItemModel(
+                    val tv = DetailEntity(
                         res.backdropPath,
                         getGenres(res.genres),
                         res.id,

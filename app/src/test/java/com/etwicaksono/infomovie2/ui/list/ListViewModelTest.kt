@@ -3,7 +3,7 @@ package com.etwicaksono.infomovie2.ui.list
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.etwicaksono.infomovie2.data.CatalogueModel
+import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.data.source.CatalogueRepository
 import com.etwicaksono.infomovie2.utils.DataDummy
 import com.nhaarman.mockitokotlin2.verify
@@ -31,7 +31,7 @@ class ListViewModelTest {
     private lateinit var catalogueRepository: CatalogueRepository
 
     @Mock
-    private lateinit var observer: Observer<List<CatalogueModel>>
+    private lateinit var observer: Observer<List<ListEntity>>
 
 
     @Before
@@ -41,7 +41,7 @@ class ListViewModelTest {
 
     @Test
     fun getAllMovies() {
-        val movies = MutableLiveData<List<CatalogueModel>>()
+        val movies = MutableLiveData<List<ListEntity>>()
         movies.value = dummyMovies
 
         `when`(catalogueRepository.getPopularMovies()).thenReturn(movies)
@@ -58,7 +58,7 @@ class ListViewModelTest {
 
     @Test
     fun getAllTvShows() {
-        val tvShows = MutableLiveData<List<CatalogueModel>>()
+        val tvShows = MutableLiveData<List<ListEntity>>()
         tvShows.value = dummyTvShows
 
         `when`(catalogueRepository.getPopularTvShow()).thenReturn(tvShows)
