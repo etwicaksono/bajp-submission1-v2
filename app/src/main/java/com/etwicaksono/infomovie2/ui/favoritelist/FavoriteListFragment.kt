@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +13,6 @@ import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.databinding.FragmentListBinding
 import com.etwicaksono.infomovie2.ui.detail.DetailActivity
 import com.etwicaksono.infomovie2.utils.Helper
-import com.etwicaksono.infomovie2.valueobject.Status
 import com.etwicaksono.infomovie2.viewmodel.ViewModelFactory
 
 class FavoriteListFragment : Fragment() {
@@ -55,56 +53,28 @@ class FavoriteListFragment : Fragment() {
 
             when (type) {
                 Helper.TYPE_MOVIE -> {
-                    viewModel.getAllMovies().observe(viewLifecycleOwner) { listMovies ->
+                    viewModel.getFavoriteMovies().observe(viewLifecycleOwner) { listMovies ->
                         if (listMovies != null) {
-                            when (listMovies.status) {
-                                Status.LOADING -> binding?.progressBarWrapper?.progressBar?.visibility =
-                                    View.VISIBLE
-                                Status.SUCCESS -> {
-                                    binding?.rvFilm?.adapter.let {
-                                        favoriteListAdapter.submitList(listMovies.data)
-                                        binding?.apply {
-                                            progressBarWrapper.progressBar.visibility = View.GONE
-                                            if (listMovies.data == null || listMovies.data.isEmpty()){
-                                                 tvNoData.visibility =
-                                                View.VISIBLE
-                                            }else{
-                                                 tvNoData.visibility =
-                                                View.GONE
-                                            }
-                                        }
-                                    }
-                                }
-                                Status.ERROR -> {
-                                    binding?.progressBarWrapper?.progressBar?.visibility = View.GONE
-                                    Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT)
-                                        .show()
-
+                            binding?.rvFilm?.adapter.let {
+                                favoriteListAdapter.submitList(listMovies)
+                                binding?.apply {
+                                    progressBarWrapper.progressBar.visibility = View.GONE
+                                    tvNoData.visibility = View.GONE
                                 }
                             }
+                        } else {
+                            binding?.tvNoData?.visibility = View.GONE
                         }
                     }
                 }
                 Helper.TYPE_TV -> {
-                    viewModel.getAllTvShows().observe(viewLifecycleOwner) { listTvShow ->
+                    viewModel.getFavoriteTvShows().observe(viewLifecycleOwner) { listTvShow ->
                         if (listTvShow != null) {
-                            when (listTvShow.status) {
-                                Status.LOADING -> binding?.progressBarWrapper?.progressBar?.visibility =
-                                    View.VISIBLE
-                                Status.SUCCESS -> {
-                                    binding?.rvFilm?.adapter.let {
-                                        favoriteListAdapter.submitList(listTvShow.data)
-                                        binding?.apply {
-                                            tvNoData.visibility = View.GONE
-                                            progressBarWrapper.progressBar.visibility = View.GONE
-                                        }
-                                    }
-                                }
-                                Status.ERROR -> {
-                                    binding?.progressBarWrapper?.progressBar?.visibility = View.GONE
-                                    Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT)
-                                        .show()
-
+                            binding?.rvFilm?.adapter.let {
+                                favoriteListAdapter.submitList(listTvShow)
+                                binding?.apply {
+                                    tvNoData.visibility = View.GONE
+                                    progressBarWrapper.progressBar.visibility = View.GONE
                                 }
                             }
                         }

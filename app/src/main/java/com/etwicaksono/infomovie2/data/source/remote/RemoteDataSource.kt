@@ -110,6 +110,30 @@ class RemoteDataSource {
     }
 
 
+    fun getFavoriteMovies(): LiveData<ApiResponse<List<ResponseMovieItem>>> {
+        val resultMovies = MutableLiveData<ApiResponse<List<ResponseMovieItem>>>()
+        api.getPopularMovie().enqueue(object : Callback<ResponseCatalogue<ResponseMovieItem>> {
+            override fun onResponse(
+                call: Call<ResponseCatalogue<ResponseMovieItem>>,
+                response: Response<ResponseCatalogue<ResponseMovieItem>>
+            ) {
+                if (response.isSuccessful) {
+                    resultMovies.value = response.body()?.let { ApiResponse.success(it.result) }
+                } else {
+                    Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseCatalogue<ResponseMovieItem>>, t: Throwable) {
+                Log.e(ContentValues.TAG, "onFailure: ${t.message.toString()}")
+            }
+
+        })
+
+        return resultMovies
+    }
+
+
     companion object {
         private val api = ApiConfig.getApiService()
 

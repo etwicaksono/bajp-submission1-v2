@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.etwicaksono.infomovie2.data.CatalogueRepository
 import com.etwicaksono.infomovie2.di.Injection
 import com.etwicaksono.infomovie2.ui.detail.DetailViewModel
+import com.etwicaksono.infomovie2.ui.homelist.FavoriteListViewModel
 import com.etwicaksono.infomovie2.ui.homelist.ListViewModel
 
 class ViewModelFactory private constructor(private val mCatalogueRepository: CatalogueRepository) :
@@ -19,6 +20,9 @@ class ViewModelFactory private constructor(private val mCatalogueRepository: Cat
             }
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
                 DetailViewModel(mCatalogueRepository) as T
+            }
+             modelClass.isAssignableFrom(FavoriteListViewModel::class.java) -> {
+                FavoriteListViewModel(mCatalogueRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: ${modelClass.name}")
         }

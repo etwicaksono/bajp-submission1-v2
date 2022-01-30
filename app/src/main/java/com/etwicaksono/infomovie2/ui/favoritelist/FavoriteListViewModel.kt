@@ -9,10 +9,6 @@ import com.etwicaksono.infomovie2.valueobject.Resource
 
 class FavoriteListViewModel(private val repo: CatalogueRepository) : ViewModel() {
 
-    fun getAllMovies(): LiveData<Resource<PagedList<ListEntity>>> = repo.getPopularMovies()
-
-    fun getAllTvShows(): LiveData<Resource<PagedList<ListEntity>>> = repo.getPopularTvShow()
-
     fun getFavoriteMovies(): LiveData<PagedList<ListEntity>> = repo.getFavoriteMovies()
 
     fun getFavoriteTvShows(): LiveData<PagedList<ListEntity>> = repo.getFavoriteTvShows()
