@@ -1,4 +1,4 @@
-package com.etwicaksono.infomovie2.ui.homelist
+package com.etwicaksono.infomovie2.ui.favoritelist
 
 import android.content.Context
 import android.content.Intent
@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.databinding.FragmentListBinding
 import com.etwicaksono.infomovie2.ui.detail.DetailActivity
+import com.etwicaksono.infomovie2.ui.homelist.FavoriteListAdapter
+import com.etwicaksono.infomovie2.ui.homelist.FavoriteListViewModel
 import com.etwicaksono.infomovie2.utils.Helper
 import com.etwicaksono.infomovie2.viewmodel.ViewModelFactory
 
@@ -54,7 +56,7 @@ class FavoriteListFragment : Fragment() {
             when (type) {
                 Helper.TYPE_MOVIE -> {
                     viewModel.getFavoriteMovies().observe(viewLifecycleOwner) { listMovies ->
-                        if (listMovies != null) {
+                        if (listMovies != null && !listMovies.isEmpty()) {
                             binding?.rvFilm?.adapter.let {
                                 favoriteListAdapter.submitList(listMovies)
                                 binding?.apply {
@@ -63,13 +65,13 @@ class FavoriteListFragment : Fragment() {
                                 }
                             }
                         } else {
-                            binding?.tvNoData?.visibility = View.GONE
+                            binding?.tvNoData?.visibility = View.VISIBLE
                         }
                     }
                 }
                 Helper.TYPE_TV -> {
                     viewModel.getFavoriteTvShows().observe(viewLifecycleOwner) { listTvShow ->
-                        if (listTvShow != null) {
+                        if (listTvShow != null && !listTvShow.isEmpty()) {
                             binding?.rvFilm?.adapter.let {
                                 favoriteListAdapter.submitList(listTvShow)
                                 binding?.apply {
@@ -77,6 +79,8 @@ class FavoriteListFragment : Fragment() {
                                     progressBarWrapper.progressBar.visibility = View.GONE
                                 }
                             }
+                        }else {
+                            binding?.tvNoData?.visibility = View.VISIBLE
                         }
                     }
                 }
