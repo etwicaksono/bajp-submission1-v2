@@ -6,6 +6,7 @@ import androidx.paging.PagedList
 import com.etwicaksono.infomovie2.data.source.local.LocalDataSource
 import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
+import com.etwicaksono.infomovie2.data.source.local.entity.ListWithDetail
 import com.etwicaksono.infomovie2.data.source.remote.ApiResponse
 import com.etwicaksono.infomovie2.data.source.remote.RemoteDataSource
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseDetailMovie
@@ -68,13 +69,13 @@ class CatalogueRepository private constructor(
         }.asLiveData()
     }
 
-    override fun getMovieDetail(movieId: Int): LiveData<Resource<DetailEntity>> {
-        return object : NetworkBoundResource<DetailEntity, ResponseDetailMovie>(appExecutors) {
-            override fun loadFromDB(): LiveData<DetailEntity> {
+    override fun getMovieDetail(movieId: Int): LiveData<Resource<ListWithDetail>> {
+        return object : NetworkBoundResource<ListWithDetail, ResponseDetailMovie>(appExecutors) {
+            override fun loadFromDB(): LiveData<ListWithDetail> {
                 return localDataSource.getDetailCatalogue(movieId)
             }
 
-            override fun shouldFetch(data: DetailEntity?): Boolean {
+            override fun shouldFetch(data: ListWithDetail?): Boolean {
                 return data == null
             }
 
@@ -142,13 +143,13 @@ class CatalogueRepository private constructor(
         }.asLiveData()
     }
 
-    override fun getTvShowDetail(tvId: Int): LiveData<Resource<DetailEntity>> {
-        return object : NetworkBoundResource<DetailEntity, ResponseDetailTv>(appExecutors) {
-            override fun loadFromDB(): LiveData<DetailEntity> {
+    override fun getTvShowDetail(tvId: Int): LiveData<Resource<ListWithDetail>> {
+        return object : NetworkBoundResource<ListWithDetail, ResponseDetailTv>(appExecutors) {
+            override fun loadFromDB(): LiveData<ListWithDetail> {
                 return localDataSource.getDetailCatalogue(tvId)
             }
 
-            override fun shouldFetch(data: DetailEntity?): Boolean {
+            override fun shouldFetch(data: ListWithDetail?): Boolean {
                 return data == null
             }
 

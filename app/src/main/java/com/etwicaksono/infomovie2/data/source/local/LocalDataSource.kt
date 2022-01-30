@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
+import com.etwicaksono.infomovie2.data.source.local.entity.ListWithDetail
 import com.etwicaksono.infomovie2.data.source.local.room.CatalogueDao
 
 class LocalDataSource private constructor(private val mDao: CatalogueDao) {
@@ -18,7 +19,7 @@ class LocalDataSource private constructor(private val mDao: CatalogueDao) {
 
     fun insertCatalogues(catalogues: List<ListEntity>) = mDao.insertCatalogues(catalogues)
 
-    fun getDetailCatalogue(id: Int): LiveData<DetailEntity> = mDao.getDetailCatalogue(id)
+    fun getDetailCatalogue(id: Int): LiveData<ListWithDetail> = mDao.getDetailCatalogue(id)
 
     fun insertDetailCatalogue(catalogue: DetailEntity) = mDao.insertDetailCatalogue(catalogue)
 

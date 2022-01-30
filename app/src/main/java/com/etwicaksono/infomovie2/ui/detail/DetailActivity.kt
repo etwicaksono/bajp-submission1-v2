@@ -51,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
                             Status.LOADING -> showLoading(true)
                             Status.SUCCESS -> {
                                 showLoading(false)
-                                movie.data?.let { setView(it) }
+                                movie.data?.mDetail?.let { setView(it) }
                             }
                             Status.ERROR -> {
                                 showLoading(false)
@@ -70,7 +70,7 @@ class DetailActivity : AppCompatActivity() {
                             Status.LOADING -> showLoading(true)
                             Status.SUCCESS -> {
                                 showLoading(false)
-                                movie.data?.let { setView(it) }
+                                movie.data?.mDetail?.let { setView(it) }
                             }
                             Status.ERROR -> {
                                 showLoading(false)
@@ -89,7 +89,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setUpToolbar() {
         binding.apply {
-            appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
                 if (collapseToolbar.height + verticalOffset < 2 * ViewCompat.getMinimumHeight(
                         collapseToolbar
                     )

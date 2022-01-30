@@ -5,6 +5,7 @@ import androidx.paging.DataSource
 import androidx.room.*
 import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
+import com.etwicaksono.infomovie2.data.source.local.entity.ListWithDetail
 
 @Dao
 interface CatalogueDao {
@@ -26,8 +27,8 @@ interface CatalogueDao {
     @Update
     fun updateCatalogues(catalogue: ListEntity)
 
-    @Query("SELECT * FROM detail_entities WHERE id=:id")
-    fun getDetailCatalogue(id: Int): LiveData<DetailEntity>
+    @Query("SELECT * FROM list_entities WHERE id=:id")
+    fun getDetailCatalogue(id: Int): LiveData<ListWithDetail>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDetailCatalogue(catalogue: DetailEntity)

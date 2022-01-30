@@ -1,6 +1,7 @@
 package com.etwicaksono.infomovie2.utils
 
 import android.content.Context
+import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.etwicaksono.infomovie2.R
@@ -46,5 +47,9 @@ object Helper {
         }
 
         return output.joinToString(", ")
+    }
+
+    fun logger(data: Any) {
+        Log.d("LOGGER", data.toString())
     }
 }

@@ -1,11 +1,17 @@
 package com.etwicaksono.infomovie2.data.source.local.entity
 
 import androidx.annotation.NonNull
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-@Entity(tableName = "detail_entities")
+@Entity(
+    tableName = "detail_entities",
+    foreignKeys = [ForeignKey(
+        entity = ListEntity::class,
+        parentColumns = ["id"],
+        childColumns = ["id"]
+    )],
+    indices = [Index(value = ["id"])]
+)
 data class DetailEntity(
     @PrimaryKey
     @NonNull

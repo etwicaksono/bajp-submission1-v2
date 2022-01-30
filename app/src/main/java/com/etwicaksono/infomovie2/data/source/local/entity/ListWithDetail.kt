@@ -8,6 +8,6 @@ data class ListWithDetail(
     var mList: ListEntity,
 
     @Relation(parentColumn = "id", entityColumn = "id")
-    var mDetail: DetailEntity
+    var mDetail: DetailEntity?
 
 )
