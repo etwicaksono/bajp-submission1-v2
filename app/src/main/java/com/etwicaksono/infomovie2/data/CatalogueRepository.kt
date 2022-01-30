@@ -69,13 +69,13 @@ class CatalogueRepository private constructor(
         }.asLiveData()
     }
 
-    override fun getMovieDetail(movieId: Int): LiveData<Resource<ListWithDetail>> {
-        return object : NetworkBoundResource<ListWithDetail, ResponseDetailMovie>(appExecutors) {
-            override fun loadFromDB(): LiveData<ListWithDetail> {
+    override fun getMovieDetail(movieId: Int): LiveData<Resource<DetailEntity>> {
+        return object : NetworkBoundResource<DetailEntity, ResponseDetailMovie>(appExecutors) {
+            override fun loadFromDB(): LiveData<DetailEntity> {
                 return localDataSource.getDetailCatalogue(movieId)
             }
 
-            override fun shouldFetch(data: ListWithDetail?): Boolean {
+            override fun shouldFetch(data: DetailEntity?): Boolean {
                 return data == null
             }
 
@@ -143,13 +143,13 @@ class CatalogueRepository private constructor(
         }.asLiveData()
     }
 
-    override fun getTvShowDetail(tvId: Int): LiveData<Resource<ListWithDetail>> {
-        return object : NetworkBoundResource<ListWithDetail, ResponseDetailTv>(appExecutors) {
-            override fun loadFromDB(): LiveData<ListWithDetail> {
+    override fun getTvShowDetail(tvId: Int): LiveData<Resource<DetailEntity>> {
+        return object : NetworkBoundResource<DetailEntity, ResponseDetailTv>(appExecutors) {
+            override fun loadFromDB(): LiveData<DetailEntity> {
                 return localDataSource.getDetailCatalogue(tvId)
             }
 
-            override fun shouldFetch(data: ListWithDetail?): Boolean {
+            override fun shouldFetch(data: DetailEntity?): Boolean {
                 return data == null
             }
 

@@ -9,9 +9,9 @@ import com.etwicaksono.infomovie2.valueobject.Resource
 
 interface CatalogueDataSource {
     fun getPopularMovies(): LiveData<Resource<PagedList<ListEntity>>>
-    fun getMovieDetail(movieId:Int): LiveData<Resource<ListWithDetail>>
+    fun getMovieDetail(movieId:Int): LiveData<Resource<DetailEntity>>
     fun getPopularTvShow(): LiveData<Resource<PagedList<ListEntity>>>
-    fun getTvShowDetail(tvId:Int): LiveData<Resource<ListWithDetail>>
+    fun getTvShowDetail(tvId:Int): LiveData<Resource<DetailEntity>>
     fun getFavoriteMovies():LiveData<PagedList<ListEntity>>
     fun getFavoriteTvShows():LiveData<PagedList<ListEntity>>
     fun setFavorite(catalogue:ListEntity,state:Boolean)

@@ -11,13 +11,10 @@ import com.etwicaksono.infomovie2.valueobject.Resource
 
 class DetailViewModel(private val catalogueRepository: CatalogueRepository) : ViewModel() {
 
-   /* fun getMovieDetail(movieId: Int): LiveData<Resource<ListWithDetail>> =
-        catalogueRepository.getMovieDetail(movieId)*/
+    fun getMovieDetail(movieId: Int): LiveData<Resource<DetailEntity>> =
+        catalogueRepository.getMovieDetail(movieId)
 
-    fun getMovieDetail(movieId: Int): LiveData<Resource<ListWithDetail>> =
-        Transformations.switchMap(movieId){mDetail->catalogueRepository.getMovieDetail(mDetail)}
-
-    fun getTvDetail(tvId: Int): LiveData<Resource<ListWithDetail>> =
+    fun getTvDetail(tvId: Int): LiveData<Resource<DetailEntity>> =
         catalogueRepository.getTvShowDetail(tvId)
 
     fun setFavorite(catalogue: ListEntity, newState: Boolean) =

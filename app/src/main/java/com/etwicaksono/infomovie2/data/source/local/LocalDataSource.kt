@@ -19,7 +19,7 @@ class LocalDataSource private constructor(private val mDao: CatalogueDao) {
 
     fun insertCatalogues(catalogues: List<ListEntity>) = mDao.insertCatalogues(catalogues)
 
-    fun getDetailCatalogue(id: Int): LiveData<ListWithDetail> = mDao.getDetailCatalogue(id)
+    fun getDetailCatalogue(id: Int): LiveData<DetailEntity> = mDao.getDetailCatalogue(id)
 
     fun insertDetailCatalogue(catalogue: DetailEntity) = mDao.insertDetailCatalogue(catalogue)
 

@@ -51,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
                             Status.LOADING -> showLoading(true)
                             Status.SUCCESS -> {
                                 showLoading(false)
-                                movie.data?.mDetail?.let { setView(it) }
+                                movie.data?.let { setView(it) }
                             }
                             Status.ERROR -> {
                                 showLoading(false)
@@ -70,7 +70,7 @@ class DetailActivity : AppCompatActivity() {
                             Status.LOADING -> showLoading(true)
                             Status.SUCCESS -> {
                                 showLoading(false)
-                                movie.data?.mDetail?.let { setView(it) }
+                                movie.data?.let { setView(it) }
                             }
                             Status.ERROR -> {
                                 showLoading(false)

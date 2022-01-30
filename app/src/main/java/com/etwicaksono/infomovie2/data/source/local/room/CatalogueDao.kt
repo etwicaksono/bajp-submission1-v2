@@ -27,8 +27,8 @@ interface CatalogueDao {
     @Update
     fun updateCatalogues(catalogue: ListEntity)
 
-    @Query("SELECT * FROM list_entities WHERE id=:id")
-    fun getDetailCatalogue(id: Int): LiveData<ListWithDetail>
+    @Query("SELECT * FROM detail_entities WHERE id=:id")
+    fun getDetailCatalogue(id: Int): LiveData<DetailEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDetailCatalogue(catalogue: DetailEntity)
