@@ -14,5 +14,5 @@ interface CatalogueDataSource {
     fun getTvShowDetail(tvId:Int): LiveData<Resource<DetailEntity>>
     fun getFavoriteMovies():LiveData<PagedList<ListEntity>>
     fun getFavoriteTvShows():LiveData<PagedList<ListEntity>>
-    fun setFavorite(catalogue:ListEntity,state:Boolean)
+    fun setFavorite(catalogue:DetailEntity,state:Boolean)
 }

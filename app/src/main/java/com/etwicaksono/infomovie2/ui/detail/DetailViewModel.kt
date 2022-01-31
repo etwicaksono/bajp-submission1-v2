@@ -17,6 +17,6 @@ class DetailViewModel(private val catalogueRepository: CatalogueRepository) : Vi
     fun getTvDetail(tvId: Int): LiveData<Resource<DetailEntity>> =
         catalogueRepository.getTvShowDetail(tvId)
 
-    fun setFavorite(catalogue: ListEntity, newState: Boolean) =
+    fun setFavorite(catalogue: DetailEntity, newState: Boolean) =
         catalogueRepository.setFavorite(catalogue, newState)
 }

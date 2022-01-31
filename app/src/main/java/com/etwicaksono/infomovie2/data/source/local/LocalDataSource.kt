@@ -23,7 +23,7 @@ class LocalDataSource private constructor(private val mDao: CatalogueDao) {
 
     fun insertDetailCatalogue(catalogue: DetailEntity) = mDao.insertDetailCatalogue(catalogue)
 
-    fun setFavorite(film: ListEntity, newState: Boolean) {
+    fun setFavorite(film: DetailEntity, newState: Boolean) {
         film.favorite = newState
         mDao.updateCatalogues(film)
     }

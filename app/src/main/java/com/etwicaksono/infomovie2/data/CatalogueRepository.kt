@@ -59,7 +59,6 @@ class CatalogueRepository private constructor(
                         title = response.title,
                         plot = response.plot,
                         posterPath = response.posterPath,
-                        favorite = false,
                     )
                     movieList.add(movie)
                 }
@@ -134,7 +133,6 @@ class CatalogueRepository private constructor(
                         title = response.title,
                         plot = response.plot,
                         posterPath = response.posterPath,
-                        favorite = false,
                     )
                     tvList.add(tv)
                 }
@@ -195,7 +193,7 @@ class CatalogueRepository private constructor(
         return LivePagedListBuilder(localDataSource.getFavoriteTvShows(), config).build()
     }
 
-    override fun setFavorite(catalogue: ListEntity, state: Boolean) {
+    override fun setFavorite(catalogue: DetailEntity, state: Boolean) {
         appExecutors.diskIO().execute { localDataSource.setFavorite(catalogue, state) }
     }
 
