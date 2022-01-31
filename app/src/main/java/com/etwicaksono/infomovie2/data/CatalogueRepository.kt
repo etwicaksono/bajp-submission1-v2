@@ -59,6 +59,7 @@ class CatalogueRepository private constructor(
                         title = response.title,
                         plot = response.plot,
                         posterPath = response.posterPath,
+                        vote = response.vote,
                     )
                     movieList.add(movie)
                 }
@@ -133,6 +134,7 @@ class CatalogueRepository private constructor(
                         title = response.title,
                         plot = response.plot,
                         posterPath = response.posterPath,
+                        vote = response.vote,
                     )
                     tvList.add(tv)
                 }

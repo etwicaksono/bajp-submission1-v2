@@ -19,11 +19,6 @@
             android:title="@string/sort_by_release_date"
             app:showAsAction="collapseActionView" />
         <item
-            android:id="@+id/action_runtime"
-            android:checked="false"
-            android:title="@string/sort_by_runtime"
-            app:showAsAction="collapseActionView" />
-        <item
             android:id="@+id/action_title"
             android:checked="false"
             android:title="@string/sort_by_title"

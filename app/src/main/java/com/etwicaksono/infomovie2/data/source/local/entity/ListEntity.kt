@@ -26,4 +26,6 @@ data class ListEntity(
     var plot: String? = null,
     @ColumnInfo(name = "poster_path")
     var posterPath: String? = null,
+    @ColumnInfo(name = "vote")
+    var vote: Double? = null,
 ) : Parcelable

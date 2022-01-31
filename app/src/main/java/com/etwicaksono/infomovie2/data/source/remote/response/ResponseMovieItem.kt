@@ -13,4 +13,6 @@ data class ResponseMovieItem(
     val plot: String,
     @SerializedName("poster_path")
     val posterPath: String,
+    @SerializedName("vote_average")
+    val vote: Double = 0.0,
 )
