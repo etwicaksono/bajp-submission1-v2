@@ -52,6 +52,7 @@ class ListAdapter(private val onClick: (ListEntity) -> Unit) :
                 "${catalogue.title} (${catalogue.year})".also { tvTitle.text = it }
                 tvReleaseDate.text = catalogue.releaseDate
                 tvPlot.text = catalogue.plot
+                tvVote.text=catalogue.vote.toString()
 
                 itemRowMovie.setOnClickListener {
                     onClick(catalogue)

@@ -12,7 +12,10 @@ import com.etwicaksono.infomovie2.utils.Helper
 class FavoriteListAdapter(private val onClick: (ListEntity) -> Unit) :
     PagedListAdapter<ListEntity, FavoriteListAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteListAdapter.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): FavoriteListAdapter.ViewHolder {
         val binding =
             ItemsRowMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -52,6 +55,7 @@ class FavoriteListAdapter(private val onClick: (ListEntity) -> Unit) :
                 "${catalogue.title} (${catalogue.year})".also { tvTitle.text = it }
                 tvReleaseDate.text = catalogue.releaseDate
                 tvPlot.text = catalogue.plot
+                tvVote.text = catalogue.vote.toString()
 
                 itemRowMovie.setOnClickListener {
                     onClick(catalogue)
