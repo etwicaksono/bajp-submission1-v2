@@ -61,7 +61,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
-        android:justificationMode="inter_word"
         android:maxLines="4"
         android:theme="@style/PlotText"
         app:layout_constraintTop_toBottomOf="@id/tv_vote"
