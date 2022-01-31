@@ -28,13 +28,13 @@
         app:layout_constraintStart_toStartOf="@id/rv_film"
         app:layout_constraintTop_toTopOf="@id/rv_film" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_no_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_data_received"
-        android:textSize="24sp"
+        android:src="@drawable/empty_state"
         android:visibility="gone"
+        android:contentDescription="@string/no_data_received"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
