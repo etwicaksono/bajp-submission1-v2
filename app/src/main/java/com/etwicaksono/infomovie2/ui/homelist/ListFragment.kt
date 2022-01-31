@@ -155,7 +155,7 @@ class ListFragment : Fragment() {
 
     companion object {
         const val TYPE = "type"
-        const val SORT = "type"
+        const val SORT = "sort"
 
         @JvmStatic
         fun newInstance(type: String,sort:String): ListFragment =
