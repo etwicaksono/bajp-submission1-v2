@@ -56,9 +56,9 @@ class FavoriteListFragment : Fragment() {
             when (type) {
                 Helper.TYPE_MOVIE -> {
                     viewModel.getFavoriteMovies().observe(viewLifecycleOwner) { listMovies ->
+                        favoriteListAdapter.submitList(listMovies)
                         if (listMovies != null && !listMovies.isEmpty()) {
                             binding?.rvFilm?.adapter.let {
-                                favoriteListAdapter.submitList(listMovies)
                                 binding?.apply {
                                     progressBarWrapper.progressBar.visibility = View.GONE
                                     tvNoData.visibility = View.GONE
@@ -71,15 +71,15 @@ class FavoriteListFragment : Fragment() {
                 }
                 Helper.TYPE_TV -> {
                     viewModel.getFavoriteTvShows().observe(viewLifecycleOwner) { listTvShow ->
+                        favoriteListAdapter.submitList(listTvShow)
                         if (listTvShow != null && !listTvShow.isEmpty()) {
                             binding?.rvFilm?.adapter.let {
-                                favoriteListAdapter.submitList(listTvShow)
                                 binding?.apply {
                                     tvNoData.visibility = View.GONE
                                     progressBarWrapper.progressBar.visibility = View.GONE
                                 }
                             }
-                        }else {
+                        } else {
                             binding?.tvNoData?.visibility = View.VISIBLE
                         }
                     }

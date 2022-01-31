@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ShareCompat
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProvider
@@ -147,10 +146,16 @@ class DetailActivity : AppCompatActivity() {
             tvPlot.text = data.overview
             tvRuntime.text = data.runtime
 
-            if(data.favorite){
-            fabBookmark.setImageResource(R.drawable.ic_favorite)
-                            }else{
-            fabBookmark.setImageResource(R.drawable.ic_favorite_border)
+            fabBookmark.apply {
+                if (data.favorite) {
+                    setImageResource(R.drawable.ic_favorite)
+                } else {
+                    setImageResource(R.drawable.ic_favorite_border)
+                }
+
+                setOnClickListener {
+                    viewModel.setFavorite(data,!data.favorite)
+                }
             }
 
 

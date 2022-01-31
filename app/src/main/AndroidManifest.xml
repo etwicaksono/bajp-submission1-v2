@@ -19,7 +19,8 @@
         <activity
             android:name=".ui.favoritelist.FavoriteActivity"
             android:exported="false"
-            android:theme="@style/Theme.InfoMovie.NoActionBar" />
+            android:theme="@style/Theme.InfoMovie.NoActionBar"
+            android:parentActivityName=".ui.homelist.HomeActivity"/>
         <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="false"

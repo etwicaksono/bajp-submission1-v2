@@ -12,4 +12,5 @@
     <string name="no_data_received">No data received</string>
     <string name="floating_button">Floating Button</string>
     <string name="favorite_buttton">Favorite Buttton</string>
+    <string name="favorite">Favorite</string>
 </resources>
