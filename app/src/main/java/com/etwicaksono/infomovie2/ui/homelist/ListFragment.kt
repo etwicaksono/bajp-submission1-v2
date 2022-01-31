@@ -23,7 +23,6 @@ class ListFragment : Fragment() {
     private lateinit var viewModel: ListViewModel
     private lateinit var listAdapter: ListAdapter
     private lateinit var type: String
-    private lateinit var sort: String
 
 
     override fun onCreateView(
@@ -39,7 +38,6 @@ class ListFragment : Fragment() {
         super.onAttach(context)
         arguments?.apply {
             getString(TYPE)?.let { type = it }
-            getString(SORT)?.let { sort = it }
         }
     }
 
@@ -59,7 +57,7 @@ class ListFragment : Fragment() {
 
             when (type) {
                 Helper.TYPE_MOVIE -> {
-                    viewModel.getAllMovies(type, sort)
+                    viewModel.getAllMovies(type)
                         .observe(viewLifecycleOwner) { listMovies ->
                             if (listMovies != null) {
                                 when (listMovies.status) {
@@ -97,7 +95,7 @@ class ListFragment : Fragment() {
                         }
                 }
                 Helper.TYPE_TV -> {
-                    viewModel.getAllTvShows(type, sort)
+                    viewModel.getAllTvShows(type)
                         .observe(viewLifecycleOwner) { listTvShow ->
                             if (listTvShow != null) {
                                 when (listTvShow.status) {
@@ -155,14 +153,12 @@ class ListFragment : Fragment() {
 
     companion object {
         const val TYPE = "type"
-        const val SORT = "sort"
 
         @JvmStatic
-        fun newInstance(type: String,sort:String): ListFragment =
+        fun newInstance(type: String): ListFragment =
             ListFragment().apply {
                 arguments = Bundle().apply {
                     putString(TYPE, type)
-                    putString(SORT, sort)
                 }
             }
     }
