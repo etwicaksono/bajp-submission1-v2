@@ -13,4 +13,11 @@
     <string name="floating_button">Floating Button</string>
     <string name="favorite_buttton">Favorite Buttton</string>
     <string name="favorite">Favorite</string>
+    <string name="random_sort">Random Sort</string>
+    <string name="sort_by_release_date">Sort by Release Date</string>
+    <string name="sort_by_runtime">Sort by Runtime</string>
+    <string name="sort_by_title">Sort by Title</string>
+    <string name="sort_by_vote">Sort by Vote</string>
+    <string name="sort_ascending">Sort Ascending</string>
+    <string name="sort_descending">Sort Descending</string>
 </resources>
