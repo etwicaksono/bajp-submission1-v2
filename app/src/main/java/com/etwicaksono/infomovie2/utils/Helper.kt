@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.etwicaksono.infomovie2.R
 import com.etwicaksono.infomovie2.data.source.remote.response.Genre
 import kotlin.math.floor
@@ -21,6 +22,7 @@ object Helper {
         Glide.with(context).clear(imageView)
         Glide.with(context)
             .load(imagePath)
+            .apply(RequestOptions.timeoutOf(5000))
             .error(R.drawable.ic_broken_image)
             .into(imageView)
     }
