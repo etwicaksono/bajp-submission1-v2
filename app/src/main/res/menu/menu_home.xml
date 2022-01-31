@@ -2,23 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_favorite"
+        android:id="@+id/action_favorite"
         android:icon="@drawable/ic_favorite"
         android:title="@string/favorite"
         app:showAsAction="ifRoom" />
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/action_asc"
-            android:checked="false"
-            android:title="@string/sort_ascending"
-            app:showAsAction="collapseActionView" />
-        <item
-            android:id="@+id/action_desc"
-            android:checked="false"
-            android:title="@string/sort_descending"
-            app:showAsAction="collapseActionView" />
-    </group>
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/action_random"
