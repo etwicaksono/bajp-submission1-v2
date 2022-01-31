@@ -94,7 +94,8 @@ class CatalogueRepository private constructor(
                     year = data.releaseDate?.let { getReleaseYear(it) },
                     runtime = data.runtime?.let { getRuntime(it) },
                     title = data.title,
-                    voteAverage = data.voteAverage.toString()
+                    voteAverage = data.voteAverage.toString(),
+                    favorite = false
                 )
                 localDataSource.insertDetailCatalogue(movie)
             }
@@ -168,7 +169,8 @@ class CatalogueRepository private constructor(
                     year = data.releaseDate?.let { getReleaseYear(it) },
                     runtime = data.runtime?.let { getRuntime(it[0]) },
                     title = data.title,
-                    voteAverage = data.voteAverage.toString()
+                    voteAverage = data.voteAverage.toString(),
+                    favorite = false
                 )
                 localDataSource.insertDetailCatalogue(movie)
             }

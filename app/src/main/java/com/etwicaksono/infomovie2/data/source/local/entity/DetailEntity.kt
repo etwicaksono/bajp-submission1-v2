@@ -35,4 +35,6 @@ data class DetailEntity(
     val title: String?,
     @ColumnInfo(name = "vote_average")
     val voteAverage: String?,
+    @ColumnInfo(name = "favorite")
+    var favorite: Boolean = false,
 )

@@ -5,7 +5,6 @@ import androidx.paging.DataSource
 import androidx.room.*
 import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
-import com.etwicaksono.infomovie2.data.source.local.entity.ListWithDetail
 
 @Dao
 interface CatalogueDao {
