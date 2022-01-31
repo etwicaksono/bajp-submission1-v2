@@ -11,13 +11,13 @@
 
         <item
             android:id="@+id/action_title"
-            android:checked="false"
+            android:checked="true"
             android:title="@string/sort_by_title"
             app:showAsAction="collapseActionView" />
         <item
-            android:id="@+id/action_random"
-            android:checked="true"
-            android:title="@string/random_sort"
+            android:id="@+id/action_vote"
+            android:checked="false"
+            android:title="@string/sort_by_vote"
             app:showAsAction="collapseActionView" />
         <item
             android:id="@+id/action_release_date"
@@ -25,9 +25,9 @@
             android:title="@string/sort_by_release_date"
             app:showAsAction="collapseActionView" />
         <item
-            android:id="@+id/action_vote"
+            android:id="@+id/action_random"
             android:checked="false"
-            android:title="@string/sort_by_vote"
+            android:title="@string/random_sort"
             app:showAsAction="collapseActionView" />
     </group>
 

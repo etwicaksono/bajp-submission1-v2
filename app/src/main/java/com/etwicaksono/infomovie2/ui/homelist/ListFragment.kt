@@ -14,7 +14,6 @@ import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.databinding.FragmentListBinding
 import com.etwicaksono.infomovie2.ui.detail.DetailActivity
 import com.etwicaksono.infomovie2.utils.Helper
-import com.etwicaksono.infomovie2.utils.SortUtils
 import com.etwicaksono.infomovie2.valueobject.Status
 import com.etwicaksono.infomovie2.viewmodel.ViewModelFactory
 
@@ -24,6 +23,7 @@ class ListFragment : Fragment() {
     private lateinit var viewModel: ListViewModel
     private lateinit var listAdapter: ListAdapter
     private lateinit var type: String
+    private lateinit var sort: String
 
 
     override fun onCreateView(
@@ -37,7 +37,10 @@ class ListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        arguments?.getString(TYPE)?.let { type = it }
+        arguments?.apply {
+            getString(TYPE)?.let { type = it }
+            getString(SORT)?.let { sort = it }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,7 +59,7 @@ class ListFragment : Fragment() {
 
             when (type) {
                 Helper.TYPE_MOVIE -> {
-                    viewModel.getAllMovies(type, SortUtils.TITLE)
+                    viewModel.getAllMovies(type, sort)
                         .observe(viewLifecycleOwner) { listMovies ->
                             if (listMovies != null) {
                                 when (listMovies.status) {
@@ -94,7 +97,7 @@ class ListFragment : Fragment() {
                         }
                 }
                 Helper.TYPE_TV -> {
-                    viewModel.getAllTvShows(type, SortUtils.TITLE)
+                    viewModel.getAllTvShows(type, sort)
                         .observe(viewLifecycleOwner) { listTvShow ->
                             if (listTvShow != null) {
                                 when (listTvShow.status) {
@@ -152,9 +155,15 @@ class ListFragment : Fragment() {
 
     companion object {
         const val TYPE = "type"
+        const val SORT = "type"
 
         @JvmStatic
-        fun newInstance(type: String): ListFragment =
-            ListFragment().apply { arguments = Bundle().apply { putString(TYPE, type) } }
+        fun newInstance(type: String,sort:String): ListFragment =
+            ListFragment().apply {
+                arguments = Bundle().apply {
+                    putString(TYPE, type)
+                    putString(SORT, sort)
+                }
+            }
     }
 }
