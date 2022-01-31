@@ -8,13 +8,13 @@ object SortUtils {
     const val TITLE = "TITLE"
     const val VOTE = "VOTE"
 
-    fun getSortedQuery(filter: String): SimpleSQLiteQuery {
+    fun getSortedQuery(type: String, filter: String): SimpleSQLiteQuery {
         val simpleQuery = StringBuilder().append("SELECT * FROM list_entities ")
         when (filter) {
-            RANDOM -> simpleQuery.append("ORDER BY RANDOM()")
-            RELEASE_DATE -> simpleQuery.append("ORDER BY release_date DESC")
-            TITLE -> simpleQuery.append("ORDER BY title ASC")
-            VOTE -> simpleQuery.append("ORDER BY vote ASC")
+            RANDOM -> simpleQuery.append("WHERE type = '$type' ORDER BY RANDOM()")
+            RELEASE_DATE -> simpleQuery.append("WHERE type = '$type' ORDER BY release_date DESC")
+            TITLE -> simpleQuery.append("WHERE type = '$type' ORDER BY title ASC")
+            VOTE -> simpleQuery.append("WHERE type = '$type' ORDER BY vote ASC")
         }
         return SimpleSQLiteQuery(simpleQuery.toString())
     }

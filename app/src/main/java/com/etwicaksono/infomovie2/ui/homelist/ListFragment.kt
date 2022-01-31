@@ -14,6 +14,7 @@ import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.databinding.FragmentListBinding
 import com.etwicaksono.infomovie2.ui.detail.DetailActivity
 import com.etwicaksono.infomovie2.utils.Helper
+import com.etwicaksono.infomovie2.utils.SortUtils
 import com.etwicaksono.infomovie2.valueobject.Status
 import com.etwicaksono.infomovie2.viewmodel.ViewModelFactory
 
@@ -55,60 +56,74 @@ class ListFragment : Fragment() {
 
             when (type) {
                 Helper.TYPE_MOVIE -> {
-                    viewModel.getAllMovies().observe(viewLifecycleOwner) { listMovies ->
-                        if (listMovies != null) {
-                            when (listMovies.status) {
-                                Status.LOADING -> binding?.progressBarWrapper?.progressBar?.visibility =
-                                    View.VISIBLE
-                                Status.SUCCESS -> {
-                                    binding?.rvFilm?.adapter.let {
-                                        listAdapter.submitList(listMovies.data)
-                                        binding?.apply {
-                                            progressBarWrapper.progressBar.visibility = View.GONE
-                                            if (listMovies.data == null || listMovies.data.isEmpty()){
-                                                 tvNoData.visibility =
-                                                View.VISIBLE
-                                            }else{
-                                                 tvNoData.visibility =
-                                                View.GONE
+                    viewModel.getAllMovies(type, SortUtils.TITLE)
+                        .observe(viewLifecycleOwner) { listMovies ->
+                            if (listMovies != null) {
+                                when (listMovies.status) {
+                                    Status.LOADING -> binding?.progressBarWrapper?.progressBar?.visibility =
+                                        View.VISIBLE
+                                    Status.SUCCESS -> {
+                                        binding?.rvFilm?.adapter.let {
+                                            listAdapter.submitList(listMovies.data)
+                                            binding?.apply {
+                                                progressBarWrapper.progressBar.visibility =
+                                                    View.GONE
+                                                if (listMovies.data == null || listMovies.data.isEmpty()) {
+                                                    tvNoData.visibility =
+                                                        View.VISIBLE
+                                                } else {
+                                                    tvNoData.visibility =
+                                                        View.GONE
+                                                }
                                             }
                                         }
                                     }
-                                }
-                                Status.ERROR -> {
-                                    binding?.progressBarWrapper?.progressBar?.visibility = View.GONE
-                                    Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT)
-                                        .show()
+                                    Status.ERROR -> {
+                                        binding?.progressBarWrapper?.progressBar?.visibility =
+                                            View.GONE
+                                        Toast.makeText(
+                                            context,
+                                            "Terjadi kesalahan",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                            .show()
 
-                                }
-                            }
-                        }
-                    }
-                }
-                Helper.TYPE_TV -> {
-                    viewModel.getAllTvShows().observe(viewLifecycleOwner) { listTvShow ->
-                        if (listTvShow != null) {
-                            when (listTvShow.status) {
-                                Status.LOADING -> binding?.progressBarWrapper?.progressBar?.visibility =
-                                    View.VISIBLE
-                                Status.SUCCESS -> {
-                                    binding?.rvFilm?.adapter.let {
-                                        listAdapter.submitList(listTvShow.data)
-                                        binding?.apply {
-                                            tvNoData.visibility = View.GONE
-                                            progressBarWrapper.progressBar.visibility = View.GONE
-                                        }
                                     }
                                 }
-                                Status.ERROR -> {
-                                    binding?.progressBarWrapper?.progressBar?.visibility = View.GONE
-                                    Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT)
-                                        .show()
+                            }
+                        }
+                }
+                Helper.TYPE_TV -> {
+                    viewModel.getAllTvShows(type, SortUtils.TITLE)
+                        .observe(viewLifecycleOwner) { listTvShow ->
+                            if (listTvShow != null) {
+                                when (listTvShow.status) {
+                                    Status.LOADING -> binding?.progressBarWrapper?.progressBar?.visibility =
+                                        View.VISIBLE
+                                    Status.SUCCESS -> {
+                                        binding?.rvFilm?.adapter.let {
+                                            listAdapter.submitList(listTvShow.data)
+                                            binding?.apply {
+                                                tvNoData.visibility = View.GONE
+                                                progressBarWrapper.progressBar.visibility =
+                                                    View.GONE
+                                            }
+                                        }
+                                    }
+                                    Status.ERROR -> {
+                                        binding?.progressBarWrapper?.progressBar?.visibility =
+                                            View.GONE
+                                        Toast.makeText(
+                                            context,
+                                            "Terjadi kesalahan",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                            .show()
 
+                                    }
                                 }
                             }
                         }
-                    }
                 }
             }
         }

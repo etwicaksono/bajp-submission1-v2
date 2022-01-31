@@ -8,6 +8,12 @@
         app:showAsAction="ifRoom" />
 
     <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/action_title"
+            android:checked="false"
+            android:title="@string/sort_by_title"
+            app:showAsAction="collapseActionView" />
         <item
             android:id="@+id/action_random"
             android:checked="true"
@@ -17,11 +23,6 @@
             android:id="@+id/action_release_date"
             android:checked="false"
             android:title="@string/sort_by_release_date"
-            app:showAsAction="collapseActionView" />
-        <item
-            android:id="@+id/action_title"
-            android:checked="false"
-            android:title="@string/sort_by_title"
             app:showAsAction="collapseActionView" />
         <item
             android:id="@+id/action_vote"

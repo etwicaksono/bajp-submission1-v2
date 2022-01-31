@@ -6,7 +6,6 @@ import androidx.paging.PagedList
 import com.etwicaksono.infomovie2.data.source.local.LocalDataSource
 import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
-import com.etwicaksono.infomovie2.data.source.local.entity.ListWithDetail
 import com.etwicaksono.infomovie2.data.source.remote.ApiResponse
 import com.etwicaksono.infomovie2.data.source.remote.RemoteDataSource
 import com.etwicaksono.infomovie2.data.source.remote.response.ResponseDetailMovie
@@ -27,7 +26,10 @@ class CatalogueRepository private constructor(
     private val appExecutors: AppExecutors
 ) :
     CatalogueDataSource {
-    override fun getPopularMovies(): LiveData<Resource<PagedList<ListEntity>>> {
+    override fun getPopularMovies(
+        type: String,
+        sort: String
+    ): LiveData<Resource<PagedList<ListEntity>>> {
         return object :
             NetworkBoundResource<PagedList<ListEntity>, List<ResponseMovieItem>>(appExecutors) {
             override fun loadFromDB(): LiveData<PagedList<ListEntity>> {
@@ -37,7 +39,7 @@ class CatalogueRepository private constructor(
                     .setPageSize(4)
                     .build()
 
-                return LivePagedListBuilder(localDataSource.getMovies(), config).build()
+                return LivePagedListBuilder(localDataSource.getMovies(type, sort), config).build()
             }
 
             override fun shouldFetch(data: PagedList<ListEntity>?): Boolean {
@@ -102,7 +104,10 @@ class CatalogueRepository private constructor(
         }.asLiveData()
     }
 
-    override fun getPopularTvShow(): LiveData<Resource<PagedList<ListEntity>>> {
+    override fun getPopularTvShow(
+        type: String,
+        sort: String
+    ): LiveData<Resource<PagedList<ListEntity>>> {
         return object :
             NetworkBoundResource<PagedList<ListEntity>, List<ResponseTvShowItem>>(appExecutors) {
             override fun loadFromDB(): LiveData<PagedList<ListEntity>> {
@@ -112,7 +117,7 @@ class CatalogueRepository private constructor(
                     .setPageSize(4)
                     .build()
 
-                return LivePagedListBuilder(localDataSource.getTvShow(), config).build()
+                return LivePagedListBuilder(localDataSource.getTvShow(type, sort), config).build()
             }
 
             override fun shouldFetch(data: PagedList<ListEntity>?): Boolean {

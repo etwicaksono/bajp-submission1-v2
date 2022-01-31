@@ -9,7 +9,9 @@ import com.etwicaksono.infomovie2.valueobject.Resource
 
 class ListViewModel(private val repo: CatalogueRepository) : ViewModel() {
 
-    fun getAllMovies(): LiveData<Resource<PagedList<ListEntity>>> = repo.getPopularMovies()
+    fun getAllMovies(type: String, sort: String): LiveData<Resource<PagedList<ListEntity>>> =
+        repo.getPopularMovies(type, sort)
 
-    fun getAllTvShows(): LiveData<Resource<PagedList<ListEntity>>> = repo.getPopularTvShow()
+    fun getAllTvShows(type: String, sort: String): LiveData<Resource<PagedList<ListEntity>>> =
+        repo.getPopularTvShow(type, sort)
 }
