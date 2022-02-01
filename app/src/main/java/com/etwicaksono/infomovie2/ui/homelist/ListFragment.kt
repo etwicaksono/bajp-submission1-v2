@@ -60,8 +60,6 @@ class ListFragment : Fragment() {
                 factory
             )[ListViewModel::class.java]
 
-            viewModel.sort.value = SortUtils.TITLE
-
             listAdapter = ListAdapter {
                 showSelectedData(it)
             }
