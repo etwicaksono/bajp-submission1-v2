@@ -13,7 +13,6 @@ import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.databinding.FragmentListBinding
 import com.etwicaksono.infomovie2.ui.detail.DetailActivity
 import com.etwicaksono.infomovie2.ui.homelist.FavoriteListAdapter
-import com.etwicaksono.infomovie2.ui.homelist.FavoriteListViewModel
 import com.etwicaksono.infomovie2.utils.Helper
 import com.etwicaksono.infomovie2.viewmodel.ViewModelFactory
 

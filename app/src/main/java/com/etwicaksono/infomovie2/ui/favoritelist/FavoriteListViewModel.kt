@@ -1,4 +1,4 @@
-package com.etwicaksono.infomovie2.ui.homelist
+package com.etwicaksono.infomovie2.ui.favoritelist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

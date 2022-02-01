@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.etwicaksono.infomovie2.data.CatalogueRepository
 import com.etwicaksono.infomovie2.di.Injection
 import com.etwicaksono.infomovie2.ui.detail.DetailViewModel
-import com.etwicaksono.infomovie2.ui.homelist.FavoriteListViewModel
+import com.etwicaksono.infomovie2.ui.favoritelist.FavoriteListViewModel
 import com.etwicaksono.infomovie2.ui.homelist.ListViewModel
 
 class ViewModelFactory private constructor(private val mCatalogueRepository: CatalogueRepository) :
