@@ -199,6 +199,6 @@ class FakeCatalogueRepository constructor(
     }
 
     override fun setFavorite(catalogue: DetailEntity, state: Boolean) {
-        appExecutors.diskIO().execute { localDataSource.setFavorite(catalogue, state) }
+        localDataSource.setFavorite(catalogue, state)
     }
 }
