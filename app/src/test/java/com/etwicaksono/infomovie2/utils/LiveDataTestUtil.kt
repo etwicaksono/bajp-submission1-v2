@@ -1,4 +1,4 @@
-package com.etwicaksono.infomovie2
+package com.etwicaksono.infomovie2.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

@@ -26,9 +26,7 @@ class CatalogueRepository private constructor(
     private val appExecutors: AppExecutors
 ) :
     CatalogueDataSource {
-    override fun getPopularMovies(
-        sort: String
-    ): LiveData<Resource<PagedList<ListEntity>>> {
+    override fun getPopularMovies(sort: String): LiveData<Resource<PagedList<ListEntity>>> {
         return object :
             NetworkBoundResource<PagedList<ListEntity>, List<ResponseMovieItem>>(appExecutors) {
             override fun loadFromDB(): LiveData<PagedList<ListEntity>> {
@@ -103,9 +101,7 @@ class CatalogueRepository private constructor(
         }.asLiveData()
     }
 
-    override fun getPopularTvShow(
-        sort: String
-    ): LiveData<Resource<PagedList<ListEntity>>> {
+    override fun getPopularTvShow(sort: String): LiveData<Resource<PagedList<ListEntity>>> {
         return object :
             NetworkBoundResource<PagedList<ListEntity>, List<ResponseTvShowItem>>(appExecutors) {
             override fun loadFromDB(): LiveData<PagedList<ListEntity>> {

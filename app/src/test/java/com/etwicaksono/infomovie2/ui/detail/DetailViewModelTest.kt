@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class DetailViewModelTest {
-    private lateinit var viewModel: DetailViewModel
+   /* private lateinit var viewModel: DetailViewModel
     private var dummyMovie = DataDummy.getMovieDummy()
     private var dummyTvShow = DataDummy.getTvShowDummy()
     private var movieId = dummyMovie.id
@@ -79,5 +79,5 @@ class DetailViewModelTest {
         Assert.assertEquals(dummyTvShow.runtime, movieData.runtime)
         Assert.assertEquals(dummyTvShow.title, movieData.title)
         Assert.assertEquals(dummyTvShow.voteAverage, movieData.voteAverage)
-    }
+    }*/
 }
