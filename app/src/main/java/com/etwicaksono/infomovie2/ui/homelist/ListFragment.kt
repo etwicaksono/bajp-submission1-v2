@@ -168,6 +168,13 @@ class ListFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_home, menu)
+
+        when (viewModel.sort.value) {
+            SortUtils.TITLE -> menu.findItem(R.id.action_title).isChecked = true
+            SortUtils.VOTE -> menu.findItem(R.id.action_vote).isChecked = true
+            SortUtils.RELEASE_DATE -> menu.findItem(R.id.action_release_date).isChecked = true
+            SortUtils.RANDOM -> menu.findItem(R.id.action_random).isChecked = true
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
