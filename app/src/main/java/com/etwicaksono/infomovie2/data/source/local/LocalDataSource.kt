@@ -5,17 +5,18 @@ import androidx.paging.DataSource
 import com.etwicaksono.infomovie2.data.source.local.entity.DetailEntity
 import com.etwicaksono.infomovie2.data.source.local.entity.ListEntity
 import com.etwicaksono.infomovie2.data.source.local.room.CatalogueDao
+import com.etwicaksono.infomovie2.utils.Helper
 import com.etwicaksono.infomovie2.utils.SortUtils
 
 class LocalDataSource private constructor(private val mDao: CatalogueDao) {
 
-    fun getMovies(type: String, sort: String): DataSource.Factory<Int, ListEntity> {
-        val query = SortUtils.getSortedQuery(type, sort)
+    fun getMovies(sort: String): DataSource.Factory<Int, ListEntity> {
+        val query = SortUtils.getSortedQuery(Helper.TYPE_MOVIE, sort)
         return mDao.getMovies(query)
     }
 
-    fun getTvShow(type: String, sort: String): DataSource.Factory<Int, ListEntity> {
-        val query = SortUtils.getSortedQuery(type, sort)
+    fun getTvShow(sort: String): DataSource.Factory<Int, ListEntity> {
+        val query = SortUtils.getSortedQuery(Helper.TYPE_TV, sort)
         return mDao.getTvShow(query)
     }
 

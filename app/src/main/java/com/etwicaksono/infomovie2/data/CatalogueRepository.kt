@@ -27,7 +27,6 @@ class CatalogueRepository private constructor(
 ) :
     CatalogueDataSource {
     override fun getPopularMovies(
-        type: String,
         sort: String
     ): LiveData<Resource<PagedList<ListEntity>>> {
         return object :
@@ -39,7 +38,7 @@ class CatalogueRepository private constructor(
                     .setPageSize(4)
                     .build()
 
-                return LivePagedListBuilder(localDataSource.getMovies(type, sort), config).build()
+                return LivePagedListBuilder(localDataSource.getMovies(sort), config).build()
             }
 
             override fun shouldFetch(data: PagedList<ListEntity>?): Boolean {
@@ -105,7 +104,6 @@ class CatalogueRepository private constructor(
     }
 
     override fun getPopularTvShow(
-        type: String,
         sort: String
     ): LiveData<Resource<PagedList<ListEntity>>> {
         return object :
@@ -117,7 +115,7 @@ class CatalogueRepository private constructor(
                     .setPageSize(4)
                     .build()
 
-                return LivePagedListBuilder(localDataSource.getTvShow(type, sort), config).build()
+                return LivePagedListBuilder(localDataSource.getTvShow(sort), config).build()
             }
 
             override fun shouldFetch(data: PagedList<ListEntity>?): Boolean {

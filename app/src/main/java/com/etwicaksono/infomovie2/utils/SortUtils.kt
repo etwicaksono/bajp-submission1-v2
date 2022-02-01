@@ -14,7 +14,7 @@ object SortUtils {
             RANDOM -> simpleQuery.append("WHERE type = '$type' ORDER BY RANDOM()")
             RELEASE_DATE -> simpleQuery.append("WHERE type = '$type' ORDER BY release_date DESC")
             TITLE -> simpleQuery.append("WHERE type = '$type' ORDER BY title ASC")
-            VOTE -> simpleQuery.append("WHERE type = '$type' ORDER BY vote ASC")
+            VOTE -> simpleQuery.append("WHERE type = '$type' ORDER BY vote DESC")
         }
         return SimpleSQLiteQuery(simpleQuery.toString())
     }

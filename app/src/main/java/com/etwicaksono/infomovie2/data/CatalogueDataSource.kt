@@ -9,9 +9,9 @@ import com.etwicaksono.infomovie2.data.source.local.entity.ListWithDetail
 import com.etwicaksono.infomovie2.valueobject.Resource
 
 interface CatalogueDataSource {
-    fun getPopularMovies(type: String,sort: String): LiveData<Resource<PagedList<ListEntity>>>
+    fun getPopularMovies(sort: String): LiveData<Resource<PagedList<ListEntity>>>
     fun getMovieDetail(movieId:Int): LiveData<Resource<DetailEntity>>
-    fun getPopularTvShow(type: String,sort: String): LiveData<Resource<PagedList<ListEntity>>>
+    fun getPopularTvShow(sort: String): LiveData<Resource<PagedList<ListEntity>>>
     fun getTvShowDetail(tvId:Int): LiveData<Resource<DetailEntity>>
     fun getFavoriteMovies():LiveData<PagedList<ListEntity>>
     fun getFavoriteTvShows():LiveData<PagedList<ListEntity>>

@@ -11,9 +11,9 @@ import com.etwicaksono.infomovie2.valueobject.Resource
 class ListViewModel(private val repo: CatalogueRepository) : ViewModel() {
     val sort = MutableLiveData<String>()
 
-    fun getAllMovies(type: String): LiveData<Resource<PagedList<ListEntity>>> =
-        repo.getPopularMovies(type, sort.value.toString())
+    fun getAllMovies(): LiveData<Resource<PagedList<ListEntity>>> =
+        repo.getPopularMovies(sort.value.toString())
 
-    fun getAllTvShows(type: String): LiveData<Resource<PagedList<ListEntity>>> =
-        repo.getPopularTvShow(type, sort.value.toString())
+    fun getAllTvShows(): LiveData<Resource<PagedList<ListEntity>>> =
+        repo.getPopularTvShow(sort.value.toString())
 }
